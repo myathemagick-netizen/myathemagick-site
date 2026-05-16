@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404">
+  <div class="container">
+    <div class="code">404</div>
+    <div class="eyebrow">Transmission not found</div>
+    <h1>This page does not exist<br>in the current chronon window</h1>
+    <p>The riftline you followed leads to an unmapped region. The system continues elsewhere.</p>
+    <div class="links">
+      <a href="/" class="btn-primary">Return to origin</a>
+      <a href="/system" class="btn-ghost">Enter the System</a>
+    </div>
+    <div class="geo">
+      <svg viewBox="0 0 200 200" width="200" height="200" opacity="0.15">
+        <g stroke="#a78bfa" stroke-width="0.8" fill="none">
+          <line x1="100" y1="10" x2="160" y2="50"/>
+          <line x1="160" y1="50" x2="190" y2="110"/>
+          <line x1="190" y1="110" x2="160" y2="170"/>
+          <line x1="160" y1="170" x2="100" y2="190"/>
+          <line x1="100" y1="190" x2="40" y2="170"/>
+          <line x1="40" y1="170" x2="10" y2="110"/>
+          <line x1="10" y1="110" x2="40" y2="50"/>
+          <line x1="40" y1="50" x2="100" y2="10"/>
+          <line x1="100" y1="10" x2="100" y2="100"/>
+          <line x1="160" y1="50" x2="100" y2="100"/>
+          <line x1="190" y1="110" x2="100" y2="100"/>
+          <line x1="160" y1="170" x2="100" y2="100"/>
+          <line x1="100" y1="190" x2="100" y2="100"/>
+          <line x1="40" y1="170" x2="100" y2="100"/>
+          <line x1="10" y1="110" x2="100" y2="100"/>
+          <line x1="40" y1="50" x2="100" y2="100"/>
+        </g>
+        <circle cx="100" cy="100" r="4" fill="#a78bfa"/>
+      </svg>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    position: relative;
+  }
+  .code {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(5rem, 12vw, 9rem);
+    color: #1a1030;
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: 0.1em;
+  }
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #4c3d6e;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-weight: 400;
+    color: #c4b5fd;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+  p {
+    font-size: 15px;
+    color: #4c3d6e;
+    font-weight: 300;
+    max-width: 400px;
+    line-height: 1.8;
+    margin-bottom: 36px;
+  }
+  .links { display: flex; gap: 16px; align-items: center; }
+  .btn-primary {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: #c4b5fd;
+    border: 1px solid rgba(167,139,250,0.35);
+    padding: 10px 24px;
+    background: rgba(109,40,217,0.14);
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+  .btn-primary:hover { background: rgba(109,40,217,0.28); }
+  .btn-ghost {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: #4c3d6e;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: #9d8cd4; }
+  .geo {
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+  }
+</style>
