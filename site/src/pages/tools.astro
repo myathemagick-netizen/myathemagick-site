@@ -1,0 +1,284 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tools = [
+  {
+    id: "audio-shear-zone",
+    icon: "◉",
+    name: "Audio Shear Zone",
+    tag: "Binaural · Frequency · Live Earth",
+    desc: "A binaural attunement engine built on the Crystal Path's seven elements. 25 presets ascending from Logos/Shadow at delta to Chaos/Spirit at gamma, Solfeggio carriers, environmental soundscapes, and Live Earth Sync pulling real-time NOAA space weather data. Runs entirely in the browser — no downloads, no files.",
+    url: "https://myathemagick-netizen.github.io/audio-shear-zone/",
+    label: "Open Audio Shear Zone",
+    status: "live",
+  },
+  {
+    id: "rivvit",
+    icon: "⬡",
+    name: "RiVViT",
+    tag: "Riftlines · Globe · VR",
+    desc: "An interactive Three.js globe mapping the icosahedral riftline network across the Earth's surface. Vortex nodes, secondary nodes, and riftline edges plotted across all 20 icosahedral faces. Open in any browser or VR headset.",
+    url: "https://myathemagick-netizen.github.io/RiVViT/",
+    label: "Open RiVViT Globe",
+    status: "live",
+  },
+  {
+    id: "levogyre",
+    icon: "↺",
+    name: "Levogyre",
+    tag: "Counter-rotation · Geometry · Visualization",
+    desc: "A visualization tool exploring levogyric motion — the counter-rotating energy circulation at the heart of the Myathe Magick System. Mesogyric face circulation made visible.",
+    url: "https://myathemagick-netizen.github.io/levogyre/",
+    label: "Open Levogyre",
+    status: "live",
+  },
+  {
+    id: "virtual-dreammachine",
+    icon: "◈",
+    name: "Virtual Dream Machine",
+    tag: "Dreamwork · Perception · Experimental",
+    desc: "A browser-based reimagining of Brion Gysin's Dreamachine — a flickering stroboscopic light device designed to produce hypnagogic hallucinations with eyes closed. This is an early experimental build. Enter with intention.",
+    url: "https://myathemagick-netizen.github.io/virtual-dreammachine/",
+    label: "Open Dream Machine",
+    status: "experimental",
+  },
+];
+---
+
+<Layout title="Tools">
+
+  <div class="page-header">
+    <div class="eyebrow">Tools</div>
+    <h1>Interactive instruments</h1>
+    <p class="intro">Browser-based tools built from the Myathe Magick System. No downloads. No accounts. Open and use.</p>
+  </div>
+
+  <div class="tools-list">
+    {tools.map(tool => (
+      <div class="tool-row" id={tool.id}>
+        <div class="tool-left">
+          <div class="tool-icon">{tool.icon}</div>
+          <div class="tool-tag">{tool.tag}</div>
+          {tool.status === "experimental" && (
+            <div class="tool-badge">Experimental</div>
+          )}
+        </div>
+        <div class="tool-center">
+          <h2>{tool.name}</h2>
+          <p>{tool.desc}</p>
+        </div>
+        <div class="tool-right">
+          <a href={tool.url} target="_blank" class="tool-btn">{tool.label} ↗</a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+<div class="coming-soon">
+    <div class="eyebrow">In development</div>
+    <div class="cs-grid">
+      <div class="cs-card">
+        <div class="cs-icon">⟡</div>
+        <div class="cs-name">Novelty Window</div>
+        <div class="cs-desc">An dishabit tracker mapped to the seven Crystal Path elements. Where a habit tracker reinforces repetition, the Novelty Window tracks disruption — a window into everywhen.</div>
+      </div>
+        <div class="cs-card">
+        <div class="cs-icon">∞</div>
+        <div class="cs-name">Joymoire</div>
+        <div class="cs-desc">The opposite of a grimoire — joy instead of grim. A cut-up method book for chaos magick practice. Chance operations, recombination, and emergence as a working magical technique.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Myathe Magick System</div>
+    <div class="footer-links">
+      <a href="https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" target="_blank">YouTube</a>
+      <a href="https://myathemagick.substack.com/" target="_blank">Substack</a>
+      <a href="https://ko-fi.com/myathemagick" target="_blank">Ko-fi</a>
+      <a href="https://www.facebook.com/profile.php?id=61563102456940" target="_blank">Facebook</a>
+      <a href="https://x.com/MyatheMagick" target="_blank">X</a>
+    </div>
+  </footer>
+
+</Layout>
+
+<style>
+  :global(body) { overflow-x: hidden; }
+
+  .page-header {
+    padding: 64px 40px 48px;
+    border-bottom: 1px solid rgba(139,92,246,0.08);
+    max-width: 700px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #4c3d6e;
+    margin-bottom: 16px;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: #f0ecff;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+  .intro {
+    font-size: 16px;
+    color: #5a4f7a;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .tools-list {
+    border-bottom: 1px solid rgba(139,92,246,0.08);
+  }
+  .tool-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 200px;
+    gap: 32px;
+    padding: 48px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+    align-items: center;
+    transition: background 0.15s;
+  }
+  .tool-row:hover { background: rgba(109,40,217,0.04); }
+  .tool-row:last-child { border-bottom: none; }
+
+  .tool-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tool-icon {
+    font-size: 28px;
+    color: #4c3d6e;
+  }
+  .tool-tag {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #3d2f5c;
+    font-family: 'Cinzel', serif;
+    line-height: 1.6;
+  }
+  .tool-badge {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: #f59e0b;
+    border: 1px solid rgba(245,158,11,0.25);
+    padding: 3px 8px;
+    width: fit-content;
+    font-family: 'Cinzel', serif;
+  }
+
+  .tool-center h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #c4b5fd;
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+  }
+  .tool-center p {
+    font-size: 15px;
+    color: #5a4f7a;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .tool-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .tool-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: #c4b5fd;
+    border: 1px solid rgba(167,139,250,0.3);
+    padding: 12px 20px;
+    background: rgba(109,40,217,0.1);
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .tool-btn:hover { background: rgba(109,40,217,0.25); }
+
+  .coming-soon {
+    padding: 56px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .cs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(139,92,246,0.06);
+    margin-top: 32px;
+    max-width: 700px;
+  }
+  .cs-card {
+    background: #09090f;
+    padding: 32px;
+  }
+  .cs-icon { font-size: 20px; color: #2d2040; margin-bottom: 12px; }
+  .cs-name {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: #3d2f5c;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+  .cs-desc { font-size: 13px; color: #2d2040; line-height: 1.7; font-weight: 300; }
+
+  footer {
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(139,92,246,0.08);
+  }
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #3d2f5c;
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #3d2f5c;
+    font-family: 'Cinzel', serif;
+    transition: color 0.15s;
+  }
+  .footer-links a:hover { color: #6d5a8a; }
+
+  @media (max-width: 800px) {
+    .page-header { padding: 40px 24px 32px; }
+    .tool-row {
+      grid-template-columns: 1fr;
+      padding: 36px 24px;
+      gap: 20px;
+    }
+    .tool-left {
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+    }
+    .tool-right { justify-content: flex-start; }
+    .cs-grid { grid-template-columns: 1fr; }
+    .coming-soon { padding: 40px 24px; }
+    footer {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+      padding: 28px 24px;
+    }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
