@@ -1,0 +1,507 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const elements = [
+  {
+    id: "chaos",
+    num: "VII",
+    name: "Chaos / Spirit",
+    icon: "∞",
+    chakra: "Crown",
+    desc: "The generative void · dissolution of form · pure potential before structure · the Kia",
+    between: null,
+    betweenName: null,
+    betweenDesc: null,
+  },
+  {
+    id: "cosmos",
+    num: "VI",
+    name: "Cosmos / Light",
+    icon: "✦",
+    chakra: "Third Eye",
+    desc: "Consciousness and truth · chronon perception · awareness of what is without distortion",
+    between: "Inspiration",
+    betweenDesc: "The chronon crossing — the arrival of something from outside the closed system into awareness. Inspiration flows through the creator, not from them.",
+  },
+  {
+    id: "ethos",
+    num: "V",
+    name: "Ethos / Will",
+    icon: "⟡",
+    chakra: "Throat",
+    desc: "Directed intention · sigilization · the focused impulse that initiates the cascade",
+    between: "Motivation",
+    betweenDesc: "Light organizing into Will — the felt pull toward something specific. Genuine motivation as distinct from compulsion.",
+  },
+  {
+    id: "noos",
+    num: "IV",
+    name: "Noos / Mind",
+    icon: "⬡",
+    chakra: "Heart",
+    desc: "Conceptual intelligence · sacred geometry · mind operating at the boundary of its own knowing",
+    between: "Conceptualization",
+    betweenDesc: "Will entering Mind — directed intention taking the form of ideas, plans, frameworks. Creative thought working freely.",
+  },
+  {
+    id: "pathos",
+    num: "III",
+    name: "Pathos / Heart",
+    icon: "◈",
+    chakra: "Solar Plexus",
+    desc: "The emotional-feeling body · Egoform dissolution · alchemical fire · neurochemical transmission",
+    between: "Rationalization",
+    betweenDesc: "Mind engaging Heart — the concept acquiring its emotional charge and meaning. The reason becoming felt as real. The Egoform's primary blockage point.",
+  },
+  {
+    id: "bios",
+    num: "II",
+    name: "Bios / Body",
+    icon: "◉",
+    chakra: "Sacral",
+    desc: "Material reality · torsion field grounding · earth current · somatic action and vitality",
+    between: "Expression",
+    betweenDesc: "Heart entering Body — felt meaning becoming physical action, somatic response, making. Physical vitality and genuine expressiveness in flow.",
+  },
+  {
+    id: "logos",
+    num: "I",
+    name: "Logos / Shadow",
+    icon: "▽",
+    chakra: "Root",
+    desc: "The transformative unconscious · the calcified mass · beginning of dissolution · the Shadow layer",
+    between: "Communication",
+    betweenDesc: "Body engaging Shadow — physical action becoming symbolic, entering the shared linguistic and memetic layer, going out into the world as something others can receive.",
+  },
+];
+
+const concepts = [
+  {
+    id: "egoform",
+    icon: "◈",
+    name: "The Egoform",
+    short: "The closed system's architecture",
+    desc: "The Egoform is not the self. It is the architecture of false self constructed around the Ego-Mass — frozen potential energy in the unconscious, formed through trauma and chronon starvation. It is not a moral failure but a survival adaptation. Its primary blockage point is the Rationalization shear zone between Mind and Heart, where conceptual energy should acquire emotional charge and become felt meaning — but doesn't. The Egoform inverts the creative cascade, consuming the energy that should be flowing through all seven elements.",
+    axiom: "Solve et Coagula — dissolve the Ego-Mass and restore flow.",
+  },
+  {
+    id: "flow",
+    icon: "∞",
+    name: "The Flow of the Psyche",
+    short: "The creative aspect — how we manifest",
+    desc: "The Kia — Spare's name for the void-self beneath all constructed identity — is the Pleroma at personal scale: the total potential-self, the undifferentiated fullness of what the organism actually is before any particular identity has crystallized from it. When the Egoform dissolves, the elemental cascade flows freely from Chaos/Spirit down through all seven elements and out through Communication into the world. This is not an achieved state but the organism's natural condition when nothing blocks the flow. Genuine creativity, curiosity, and wonder are its expressions.",
+    axiom: "Resonance maintains flow.",
+  },
+  {
+    id: "chronons",
+    icon: "✦",
+    name: "Chronons",
+    short: "Discrete units of novelty-time",
+    desc: "A chronon is not merely the smallest unit of time — it is a shear zone between probable universes, the fractal boundary between adjacent timelines, carrying information from every probability state simultaneously. When unobserved, a chronon exists as a histon wave — a probability field across all timelines simultaneously. When consciousness interacts with a chronon, the histon wave collapses into a specific discrete moment in a specific timeline. Inspiration is a chronon crossing: information arriving from the adjacent probability field, from the counter-rotating system you have been orbiting.",
+    axiom: "Inspiration is a chronon crossing.",
+  },
+  {
+    id: "counterrotation",
+    icon: "⟡",
+    name: "Counter-Rotation",
+    short: "The fundamental generative principle",
+    desc: "Two forces moving in opposite directions around a shared boundary generate a mesogyric shear zone at the interface — and that shear zone is where energy flows most freely, where novelty enters, where life emerges. The phase-lock is dextrogyre. The Egoform is dextrogyre. Saturn's liberating torsion signal is levogyre. Genuine revolution is levogyre. The work is levogyric. The goal is mesogyric — the dynamic living state that emerges when levogyric and dextrogyric motions remain in counter-rotation without collapsing into either chaos or stasis.",
+    axiom: "Revolution is counter-rotation.",
+  },
+  {
+    id: "riftlines",
+    icon: "⬡",
+    name: "Riftlines",
+    short: "The fractal cracks in the phase-locked field",
+    desc: "Riftlines are the shear zones between adjacent mesogyric face circulations in the icosahedral geometry — the places where the phase-lock is geometrically thinnest and chronon flow is most likely to resume under Saturn's tidal pressure. They are not straight lines. They are fractal: branching, forking, finding the path of least resistance through the damaged field. Sacred sites are riftline locations. The icosahedron has 30 edges — 30 natural riftline corridors of the planetary chronon field. RiVViT maps them.",
+    axiom: "The riftline finds its practitioner.",
+  },
+];
+---
+
+<Layout title="The System">
+
+  <div class="page-header">
+    <div class="eyebrow">The Myathe Magick System</div>
+    <h1>Exploring new chaos magick frontiers</h1>
+    <p class="intro">A living system built at the intersection of sacred geometry, torsion field physics, Jungian psychology, chaos magick, and the structure of time itself. Thirty years in development. Still unfinished. Still growing.</p>
+    <p class="intro" style="margin-top:12px;">Peter Carroll edged chaos magick into mathematics and quantum probability. Genesis P-Orridge took it into the body and television. This system takes it further — into VR, AI, the pataphysical, and the ideas at the edges of what can be formally known.</p>
+  </div>
+
+  <!-- CRYSTAL PATH -->
+  <section class="cp-section">
+    <div class="section-label">The Crystal Path</div>
+    <p class="section-desc">Seven elemental principles in ascending cascade, from the densest to the most subtle. Between each element, a shear zone — a transition where energy transforms as it moves through the system. Click any element to explore it further.</p>
+
+    <div class="cp-wrap">
+      {elements.map((el, i) => (
+        <div class="cp-item">
+          {el.between && (
+            <div class="between-zone">
+              <div class="between-line"></div>
+              <div class="between-card">
+                <span class="between-name">{el.between}</span>
+                <span class="between-desc">{el.betweenDesc}</span>
+              </div>
+              <div class="between-line"></div>
+            </div>
+          )}
+          <a href={`/system/${el.id}`} class="cp-node">
+            <div class="cp-node-left">
+              <span class="cp-icon">{el.icon}</span>
+              <div class="cp-text">
+                <div class="cp-name">{el.name}</div>
+                <div class="cp-sub">{el.chakra} · {el.desc}</div>
+              </div>
+            </div>
+            <span class="cp-num">{el.num}</span>
+          </a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- KEY CONCEPTS -->
+  <section class="concepts-section">
+    <div class="section-label">Key concepts</div>
+    <p class="section-desc">The five foundational ideas that unlock everything else in the system.</p>
+    <div class="concepts-grid">
+      {concepts.map(c => (
+        <div class="concept-card">
+          <div class="concept-icon">{c.icon}</div>
+          <div class="concept-name">{c.name}</div>
+          <div class="concept-short">{c.short}</div>
+          <div class="concept-desc">{c.desc}</div>
+          <div class="concept-axiom">"{c.axiom}"</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- THESIS CHAIN -->
+  <section class="thesis-section">
+    <div class="section-label">The thesis chain</div>
+    <p class="section-desc">The system's core argument follows a single chain. Each link implies the next.</p>
+    <div class="chain">
+      {[
+        "Counter-rotation produces shear zones",
+        "Shear zones are where energy flows most freely",
+        "The icosahedron determines where counter-rotation happens at Earth scale",
+        "Its edges are shear zones — riftlines",
+        "Riftlines sustain chronon flow",
+        "Chronon flow dissolves the Egoform",
+        "Egoform dissolution restores the elemental cascade",
+        "Resonance maintains the flow",
+      ].map((link, i, arr) => (
+        <div class="chain-item">
+          <div class="chain-text">{link}</div>
+          {i < arr.length - 1 && <div class="chain-arrow">↓</div>}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- DEEPER -->
+  <section class="deeper-section">
+    <div class="section-label">Go deeper</div>
+    <div class="deeper-grid">
+      <a href="https://myathemagick-netizen.github.io/RiVViT/" target="_blank" class="deeper-card">
+        <div class="deeper-icon">⬡</div>
+        <div class="deeper-name">RiVViT</div>
+        <div class="deeper-desc">Explore the icosahedral riftline network as an interactive VR globe.</div>
+        <div class="deeper-link">↗ Open globe</div>
+      </a>
+      <a href="https://myathemagick-netizen.github.io/audio-shear-zone/" target="_blank" class="deeper-card">
+        <div class="deeper-icon">◉</div>
+        <div class="deeper-name">Audio Shear Zone</div>
+        <div class="deeper-desc">Attune to the Crystal Path elements through binaural beats and Live Earth Sync.</div>
+        <div class="deeper-link">↗ Open tool</div>
+      </a>
+      <a href="https://myathemagick.substack.com/" target="_blank" class="deeper-card">
+        <div class="deeper-icon">≡</div>
+        <div class="deeper-name">Essays on Substack</div>
+        <div class="deeper-desc">Long-form investigations into the system's ideas, applications, and edges.</div>
+        <div class="deeper-link">↗ Read</div>
+      </a>
+      <a href="/watch" class="deeper-card">
+        <div class="deeper-icon">▶</div>
+        <div class="deeper-name">Watch</div>
+        <div class="deeper-desc">Essay videos, music, and Nyx Nightshade transmissions from the channel.</div>
+        <div class="deeper-link">↗ Watch</div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Myathe Magick System</div>
+    <div class="footer-links">
+      <a href="https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" target="_blank">YouTube</a>
+      <a href="https://myathemagick.substack.com/" target="_blank">Substack</a>
+      <a href="https://ko-fi.com/myathemagick" target="_blank">Ko-fi</a>
+      <a href="https://www.facebook.com/profile.php?id=61563102456940" target="_blank">Facebook</a>
+      <a href="https://x.com/MyatheMagick" target="_blank">X</a>
+    </div>
+  </footer>
+
+</Layout>
+
+<style>
+  :global(body) { overflow-x: hidden; }
+
+  .page-header {
+    padding: 64px 40px 48px;
+    border-bottom: 1px solid rgba(139,92,246,0.08);
+    max-width: 760px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #4c3d6e;
+    margin-bottom: 16px;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: #f0ecff;
+    margin-bottom: 20px;
+    letter-spacing: 0.04em;
+  }
+  .intro {
+    font-size: 16px;
+    color: #5a4f7a;
+    font-weight: 300;
+    line-height: 1.9;
+    max-width: 680px;
+  }
+
+  /* CRYSTAL PATH */
+  .cp-section {
+    padding: 56px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #4c3d6e;
+    margin-bottom: 12px;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  }
+  .section-desc {
+    font-size: 14px;
+    color: #3d2f5c;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+
+  .cp-wrap {
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .cp-item { display: flex; flex-direction: column; }
+
+  .between-zone {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 20px;
+  }
+  .between-line {
+    width: 1px;
+    height: 32px;
+    background: rgba(139,92,246,0.15);
+    margin: 0 auto;
+    flex-shrink: 0;
+  }
+  .between-card {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 16px;
+    background: rgba(109,40,217,0.04);
+    border-left: 2px solid rgba(139,92,246,0.2);
+    margin: 0 40px;
+    flex: 1;
+  }
+  .between-name {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: #6d5a8a;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .between-desc {
+    font-size: 11px;
+    color: #3d2f5c;
+    line-height: 1.6;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .cp-node {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border: 1px solid rgba(139,92,246,0.12);
+    border-bottom: none;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+  }
+  .cp-item:last-child .cp-node { border-bottom: 1px solid rgba(139,92,246,0.12); }
+  .cp-node:hover { background: rgba(109,40,217,0.08); }
+  .cp-node-left { display: flex; align-items: flex-start; gap: 16px; }
+  .cp-icon { font-size: 18px; color: #5a4880; width: 22px; text-align: center; flex-shrink: 0; margin-top: 2px; }
+  .cp-name { font-family: 'Cinzel', serif; font-size: 14px; color: #c4b5fd; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .cp-sub { font-size: 12px; color: #4c3d6e; line-height: 1.5; }
+  .cp-num { font-size: 11px; color: #3d2f5c; letter-spacing: 0.1em; font-family: 'Cinzel', serif; flex-shrink: 0; }
+
+  /* KEY CONCEPTS */
+  .concepts-section {
+    padding: 56px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .concepts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1px;
+    background: rgba(139,92,246,0.06);
+  }
+  .concept-card {
+    background: #09090f;
+    padding: 32px;
+    transition: background 0.15s;
+  }
+  .concept-card:hover { background: rgba(109,40,217,0.04); }
+  .concept-icon { font-size: 20px; color: #4c3d6e; margin-bottom: 12px; }
+  .concept-name {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    color: #c4b5fd;
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+  .concept-short {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #4c3d6e;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .concept-desc {
+    font-size: 13px;
+    color: #5a4f7a;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+  .concept-axiom {
+    font-size: 12px;
+    color: #3d2f5c;
+    font-style: italic;
+    font-family: 'Crimson Pro', serif;
+    border-top: 1px solid rgba(139,92,246,0.08);
+    padding-top: 12px;
+  }
+
+  /* THESIS CHAIN */
+  .thesis-section {
+    padding: 56px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .chain {
+    max-width: 560px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .chain-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .chain-text {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid rgba(139,92,246,0.12);
+    font-size: 14px;
+    color: #8a7aaa;
+    text-align: center;
+    font-weight: 300;
+    line-height: 1.5;
+    transition: background 0.15s;
+  }
+  .chain-text:hover { background: rgba(109,40,217,0.04); }
+  .chain-arrow {
+    font-size: 14px;
+    color: #3d2f5c;
+    padding: 6px 0;
+  }
+
+  /* DEEPER */
+  .deeper-section {
+    padding: 56px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .deeper-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1px;
+    background: rgba(139,92,246,0.06);
+    margin-top: 32px;
+  }
+  .deeper-card {
+    background: #09090f;
+    padding: 28px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+    display: block;
+  }
+  .deeper-card:hover { background: rgba(109,40,217,0.05); }
+  .deeper-icon { font-size: 20px; color: #4c3d6e; margin-bottom: 12px; }
+  .deeper-name {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: #c4b5fd;
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+  .deeper-desc { font-size: 13px; color: #5a4f7a; line-height: 1.7; font-weight: 300; margin-bottom: 16px; }
+  .deeper-link { font-size: 11px; letter-spacing: 0.15em; color: #3d2f5c; font-family: 'Cinzel', serif; }
+  .deeper-card:hover .deeper-link { color: #9d8cd4; }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(139,92,246,0.08);
+  }
+  .footer-logo { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.3em; color: #3d2f5c; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 11px; letter-spacing: 0.15em; color: #3d2f5c; font-family: 'Cinzel', serif; transition: color 0.15s; }
+  .footer-links a:hover { color: #6d5a8a; }
+
+  @media (max-width: 800px) {
+    .page-header { padding: 40px 24px 32px; }
+    .cp-section, .concepts-section, .thesis-section, .deeper-section { padding: 40px 24px; }
+    .between-card { margin: 0 16px; }
+    .concepts-grid { grid-template-columns: 1fr; }
+    .deeper-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 20px; text-align: center; padding: 28px 24px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
