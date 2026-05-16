@@ -407,4 +407,79 @@ import Layout from '../layouts/Layout.astro';
     transition: color 0.15s;
   }
   .footer-links a:hover { color: #6d5a8a; }
+
+  /* MOBILE */
+  @media (max-width: 800px) {
+    .hero {
+      grid-template-columns: 1fr;
+	  overflow: hidden;
+    }
+    .hero-left {
+      padding: 40px 24px;
+      border-right: none;
+      border-bottom: 1px solid rgba(139,92,246,0.08);
+    }
+    .hero-right {
+      min-height: 280px;
+    }
+    .earth-bar {
+      gap: 16px;
+      padding: 16px 24px;
+    }
+    .earth-sep {
+      display: none;
+    }
+    .earth-cta {
+      margin-left: 0;
+      width: 100%;
+    }
+    .stats-bar {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .stat {
+      padding: 20px 24px;
+    }
+    .stat:nth-child(2) {
+      border-right: none;
+    }
+    .cp-section {
+      padding: 40px 24px;
+    }
+    .cp-stack {
+      max-width: 100%;
+    }
+    .tools-grid {
+      grid-template-columns: 1fr;
+    }
+    .tool-card {
+      padding: 28px 24px;
+    }
+    footer {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+      padding: 28px 24px;
+    }
+    .footer-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+	nav {
+      padding: 14px 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-links {
+      display: none;
+    }
+    .hero-right {
+      width: 100%;
+      overflow: hidden;
+    }
+    .globe-wrap svg {
+      width: 220px;
+      height: 220px;
+    }
+  }
+
 </style>
