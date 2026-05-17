@@ -4,20 +4,21 @@ import Layout from '../layouts/Layout.astro';
 const elements = [
   {
     id: "chaos",
-    num: "VII",
+    num: "I",
     name: "Chaos / Spirit",
     icon: "∞",
+    color: "#c084fc",
     chakra: "Crown",
     desc: "The generative void · dissolution of form · pure potential before structure · the Kia",
     between: null,
-    betweenName: null,
     betweenDesc: null,
   },
   {
     id: "cosmos",
-    num: "VI",
+    num: "II",
     name: "Cosmos / Light",
     icon: "✦",
+    color: "#7c3aed",
     chakra: "Third Eye",
     desc: "Consciousness and truth · chronon perception · awareness of what is without distortion",
     between: "Inspiration",
@@ -25,9 +26,10 @@ const elements = [
   },
   {
     id: "ethos",
-    num: "V",
+    num: "III",
     name: "Ethos / Will",
     icon: "⟡",
+    color: "#5b21b6",
     chakra: "Throat",
     desc: "Directed intention · sigilization · the focused impulse that initiates the cascade",
     between: "Motivation",
@@ -38,6 +40,7 @@ const elements = [
     num: "IV",
     name: "Noos / Mind",
     icon: "⬡",
+    color: "#0e7490",
     chakra: "Heart",
     desc: "Conceptual intelligence · sacred geometry · mind operating at the boundary of its own knowing",
     between: "Conceptualization",
@@ -45,19 +48,21 @@ const elements = [
   },
   {
     id: "pathos",
-    num: "III",
+    num: "V",
     name: "Pathos / Heart",
     icon: "◈",
+    color: "#92400e",
     chakra: "Solar Plexus",
     desc: "The emotional-feeling body · Egoform dissolution · alchemical fire · neurochemical transmission",
     between: "Rationalization",
-    betweenDesc: "Mind engaging Heart — the concept acquiring its emotional charge and meaning. The reason becoming felt as real. The Egoform's primary blockage point.",
+    betweenDesc: "Mind engaging Heart — the concept acquiring its emotional charge and meaning. The Egoform's primary blockage point.",
   },
   {
     id: "bios",
-    num: "II",
+    num: "VI",
     name: "Bios / Body",
     icon: "◉",
+    color: "#7f1d1d",
     chakra: "Sacral",
     desc: "Material reality · torsion field grounding · earth current · somatic action and vitality",
     between: "Expression",
@@ -65,9 +70,10 @@ const elements = [
   },
   {
     id: "logos",
-    num: "I",
+    num: "VII",
     name: "Logos / Shadow",
     icon: "▽",
+    color: "#3b0f0f",
     chakra: "Root",
     desc: "The transformative unconscious · the calcified mass · beginning of dissolution · the Shadow layer",
     between: "Communication",
@@ -139,22 +145,22 @@ const concepts = [
           {el.between && (
             <div class="between-zone">
               <div class="between-line"></div>
-              <div class="between-card">
-                <span class="between-name">{el.between}</span>
+              <div class="between-card" style={`border-left: 2px solid ${el.color}44`}>
+                <span class="between-name" style={`color: ${el.color}99`}>{el.between}</span>
                 <span class="between-desc">{el.betweenDesc}</span>
               </div>
               <div class="between-line"></div>
             </div>
           )}
-          <a href={`/system/${el.id}`} class="cp-node">
+           <a href={`/system/${el.id}`} class="cp-node" style={`border-left: 3px solid ${el.color}; `}>
             <div class="cp-node-left">
-              <span class="cp-icon">{el.icon}</span>
+              <span class="cp-icon" style={`color: ${el.color}`}>{el.icon}</span>
               <div class="cp-text">
-                <div class="cp-name">{el.name}</div>
+                <div class="cp-name" style={`color: ${el.color}`}>{el.name}</div>
                 <div class="cp-sub">{el.chakra} · {el.desc}</div>
               </div>
             </div>
-            <span class="cp-num">{el.num}</span>
+            <span class="cp-num" style={`color: ${el.color}; opacity: 0.6`}>{el.num}</span>
           </a>
         </div>
       ))}
