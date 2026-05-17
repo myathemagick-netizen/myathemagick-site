@@ -3,7 +3,7 @@ import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 const videos = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/videos' }),
+  loader: glob({ pattern: '*.md', base: 'src/content/videos' }),
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
@@ -16,4 +16,17 @@ const videos = defineCollection({
   }),
 });
 
-export const collections = { videos };
+const music = defineCollection({
+  loader: glob({ pattern: '*.md', base: 'src/content/music' }),
+  schema: z.object({
+    title: z.string(),
+    volume: z.number(),
+    track: z.number(),
+    duration: z.string(),
+    tag: z.string(),
+    flavor: z.string(),
+    audioUrl: z.string(),
+  }),
+});
+
+export const collections = { videos, music };
