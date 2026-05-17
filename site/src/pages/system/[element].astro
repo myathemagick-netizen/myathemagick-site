@@ -1,0 +1,470 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const elements = {
+  chaos: {
+    num: "I",
+    name: "Chaos / Spirit",
+    icon: "∞",
+    color: "#c084fc",
+    glowColor: "rgba(192,132,252,0.4)",
+    chakra: "Crown",
+    keyword: "Dissolution",
+    tagline: "The generative void that precedes all structure",
+    desc: "Chaos/Spirit is the Spiritual Circuit — the source, pure potential, the Kia. It is not disorder. It is the state prior to order, the field of pure potential from which all structure emerges. In Austin Osman Spare's vocabulary this is the Kia — the void-self, the undifferentiated totality of what the organism actually is before any particular identity has crystallized from it. The Crown circuit: the spiritual source, pure potential, the generative nothing that is actually everything before it becomes specific. All seven elements are active simultaneously at every moment — Chaos/Spirit is not a destination to reach but the ground everything else rests on.",
+    shearBelow: "Inspiration",
+    shearBelowDesc: "The chronon crossing — the arrival of something from outside the closed system into awareness. Inspiration is not generated internally. It is perceived from adjacent timelines through the histon wave's probability field. It arrives as if from nowhere because it is from somewhere else: from the other side of the shear zone, from the infinite fractal boundary between the actual and the possible.",
+    practices: [
+      "Meditation on the void — not emptiness but fullness before form",
+      "Chaos magick gnosis practices — the non-attachment state",
+      "Audio Shear Zone: Gamma presets at the Chaos/Spirit level",
+      "Working with the ∞ sigil as a focus for dissolution practice",
+    ],
+    connections: ["Chronons", "Counter-rotation", "The Kia", "Gnosis", "The histon wave"],
+  },
+  cosmos: {
+    num: "II",
+    name: "Cosmos / Light",
+    icon: "✦",
+    color: "#a78bfa",
+    glowColor: "rgba(167,139,250,0.4)",
+    chakra: "Third Eye",
+    keyword: "Perception",
+    tagline: "Consciousness and awareness — seeing what is without distortion",
+    desc: "Cosmos/Light is the Integral Circuit — consciousness and awareness. Where Chaos/Spirit is the source, Cosmos/Light is the first act of perception: consciousness becoming aware of itself and of what is. This is not analytical mind — that comes later at Noos/Mind. This is raw perception, the ability to see what is actually there rather than what the Egoform filters into awareness. In the descending cascade, Inspiration arrives at this level — the chronon crossing delivers its signal into consciousness first, before Will or Mind have a chance to interpret or filter it. The Third Eye circuit: the capacity to perceive truth directly.",
+    shearBelow: "Motivation",
+    shearBelowDesc: "Light organizing into Will — consciousness becoming directed. The felt pull toward something specific that is genuinely distinct from compulsion or Egoform-driven habit. Genuine motivation arises here when Cosmos/Light is flowing freely into Ethos/Will.",
+    practices: [
+      "Perception exercises — observing without interpreting or narrating",
+      "Scrying and direct perception practices",
+      "Audio Shear Zone: High Alpha / Low Beta presets",
+      "Working with the ✦ sigil as a focus for clarity of perception",
+    ],
+    connections: ["Chronon perception", "The Inspiration shear zone", "Riftline awareness", "Scrying"],
+  },
+  ethos: {
+    num: "III",
+    name: "Ethos / Will",
+    icon: "⟡",
+    color: "#8b5cf6",
+    glowColor: "rgba(139,92,246,0.4)",
+    chakra: "Throat",
+    keyword: "Direction",
+    tagline: "The Causal Circuit — directed intention",
+    desc: "Ethos/Will is the Causal Circuit — directed intention. This is where perception becomes purpose. The signal received at Cosmos/Light acquires a direction at Ethos/Will — it becomes pointed at something, aimed, focused. In chaos magick terms this is the moment of sigilization: the raw intent, before it has been filtered through Mind or colored by Heart. Spare's method works at this level — stripping the intent down to its bare directional impulse and encoding it before the Egoform's interpretive machinery can capture it. The Throat circuit: the focused impulse that initiates the cascade downward into manifestation.",
+    shearBelow: "Conceptualization",
+    shearBelowDesc: "Will entering Mind — directed intention taking the form of ideas, plans, and frameworks. The impulse becomes thinkable, articulable, mappable. This is where the creative process becomes conscious.",
+    practices: [
+      "Sigilization using the Spare method — encoding intent before the Egoform captures it",
+      "Statement of intent work — compression and clarity",
+      "Audio Shear Zone: Alpha presets at the Ethos/Will level",
+      "Working with the ⟡ sigil as a directional focus",
+    ],
+    connections: ["Sigilization", "Austin Osman Spare", "The linking sigil", "Chaos Magick 101"],
+  },
+  noos: {
+    num: "IV",
+    name: "Noos / Mind",
+    icon: "⬡",
+    color: "#22d3ee",
+    glowColor: "rgba(34,211,238,0.35)",
+    chakra: "Heart",
+    keyword: "Conceptualization",
+    tagline: "The Mental Circuit — conceptualization and rationalization",
+    desc: "Noos/Mind is the Mental Circuit — conceptualization and rationalization. This is where directed will becomes thought: ideas, frameworks, plans, maps. Sacred geometry lives here — the mind apprehending structure, pattern, and relationship. The icosahedron is a Noos/Mind object. The Crystal Path diagram is a Noos/Mind object. Noos/Mind is also the level at which the Egoform exerts its most subtle influence — not through raw blocking but through the capture of the rational faculty, turning it toward the production of narrative rather than genuine understanding. Mind is the software of the system — between the light of consciousness above and the wetware of feeling below.",
+    shearBelow: "Rationalization",
+    shearBelowDesc: "Mind engaging Heart — the concept acquiring its emotional charge and meaning. The reason becoming felt as real. This is the Egoform's primary blockage point: the transition where conceptual energy should become felt meaning but instead gets intercepted and recycled as more narrative, more analysis, more loops.",
+    practices: [
+      "Sacred geometry study and construction",
+      "System mapping and diagramming",
+      "Audio Shear Zone: Alpha presets",
+      "Working with the ⬡ sigil as a focus for clarity of mind",
+    ],
+    connections: ["Sacred geometry", "The Egoform", "Rationalization shear zone", "RiVViT"],
+  },
+  pathos: {
+    num: "V",
+    name: "Pathos / Heart",
+    icon: "◈",
+    color: "#fb923c",
+    glowColor: "rgba(251,146,60,0.35)",
+    chakra: "Solar Plexus",
+    keyword: "Feeling",
+    tagline: "The neurochemical wetware between the software of Mind and the hardware of Body",
+    desc: "Pathos/Heart is the Emotional-Neurochemical Circuit — feeling and meaning. The wetware between the software of Mind and the hardware of Body. This is where concepts become real: the idea that has acquired its emotional charge, the understanding that is felt rather than merely known. Aristotle's Pathos — what an audience feels, what a being undergoes. The neurochemical transmission layer named as the seat of lived emotional experience. The Egoform's primary operational blockage is at the Rationalization shear zone just above — where conceptual energy should acquire emotional charge and become felt meaning. When that shear zone is blocked, Heart is starved of incoming signal and begins generating its own — typically through negative neurochemical feedback loops. The alchemical fire at this level is what burns through the Ego-Mass.",
+    shearBelow: "Expression",
+    shearBelowDesc: "Heart entering Body — felt meaning becoming physical action, somatic response, making. The emotion becoming gesture, art, movement, sound. Physical vitality and genuine expressiveness in flow when this transition is unblocked.",
+    practices: [
+      "Emotional body work — feeling without narrative or analysis",
+      "Creative practice as Egoform dissolution technology",
+      "Audio Shear Zone: Theta presets",
+      "Working with the ◈ sigil as a focus for emotional clarity",
+    ],
+    connections: ["The Egoform", "Solve et Coagula", "Neurochemistry", "Creative practice"],
+  },
+  bios: {
+    num: "VI",
+    name: "Bios / Body",
+    icon: "◉",
+    color: "#f87171",
+    glowColor: "rgba(248,113,113,0.35)",
+    chakra: "Sacral",
+    keyword: "Embodiment",
+    tagline: "The Physical-Sexual Circuit — somatic action and vitality",
+    desc: "Bios/Body is the Physical-Sexual Circuit — somatic action and vitality. The hardware of the system. This is where the cascade becomes physical: the felt meaning of Pathos/Heart expressed as actual movement, making, doing. Torsion field physics operates most visibly at this level — the body as a receiver and transmitter of torsion fields, grounded in the earth current, responsive to the Schumann resonance and geomagnetic conditions. Audio Shear Zone's Live Earth Sync is a Bios/Body tool: it connects the listening body to planetary torsion conditions in real time. 'The Logos is not the Bios' — the map is not the territory. The lived, somatic, biological reality of the Body cannot be substituted by its symbolic representation.",
+    shearBelow: "Communication",
+    shearBelowDesc: "Body engaging Shadow — physical action becoming symbolic, entering the shared linguistic and memetic layer, going out into the world as something others can receive. The made thing becoming transmissible.",
+    practices: [
+      "Somatic awareness practices — body as instrument of perception",
+      "Torsion field attunement via Audio Shear Zone",
+      "Movement and body-based magick",
+      "Working with the ◉ sigil as a grounding focus",
+    ],
+    connections: ["Torsion fields", "Schumann resonance", "Audio Shear Zone", "Live Earth Sync"],
+  },
+  logos: {
+    num: "VII",
+    name: "Logos / Shadow",
+    icon: "▽",
+    color: "#f87171",
+    glowColor: "rgba(248,113,113,0.35)",
+    chakra: "Root",
+    keyword: "Transmission",
+    tagline: "The Symbolic-Linguistic Circuit — language, symbol, the memetic layer",
+    desc: "Logos/Shadow is the Symbolic-Linguistic Circuit — expression, communication, the memetic layer. This is not the psychological shadow. It is the Word — Heraclitus' Logos as the underlying rational structure of reality that most people cannot perceive even though it governs everything. 'In the beginning was the Word' — the creative principle that manifested reality through language. The system's formulation 'The Logos is not the Bios' inverts Korzybski's 'the map is not the territory' — addressing the specific confusion of the Shadow/informational layer with the biological/lived layer. Baudrillard's hyperreality, the simulacra replacing the real — this is what happens when the Logos layer is mistaken for the Bios layer. Magick operates at the Shadow level: the symbol operates below the Egoform's conscious monitoring, in the layer where language and meaning are constructed. The cut-up method — Burroughs and Gysin's technique — targets this layer directly.",
+    shearBelow: null,
+    shearBelowDesc: null,
+    practices: [
+      "Cut-up method — disrupting the Egoform's narrative control at the linguistic layer",
+      "Sigil work — encoding intent below the Egoform's recognizable vocabulary",
+      "Language deconstruction — E-prime, Korzybski, general semantics",
+      "Audio Shear Zone: Delta presets at the Logos/Shadow level",
+      "Working with the ▽ sigil as a focus for memetic awareness",
+    ],
+    connections: ["Burroughs and Gysin", "Cut-up method", "Baudrillard", "Korzybski", "The Egoform", "Sigilization", "Language Is a Virus"],
+  },
+};
+
+export async function getStaticPaths() {
+  return [
+    { params: { element: 'chaos' } },
+    { params: { element: 'cosmos' } },
+    { params: { element: 'ethos' } },
+    { params: { element: 'noos' } },
+    { params: { element: 'pathos' } },
+    { params: { element: 'bios' } },
+    { params: { element: 'logos' } },
+  ];
+}
+
+const { element } = Astro.params;
+const data = elements[element];
+
+if (!data) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout title={data.name}>
+
+  <div class="page-header" style={`border-left: 4px solid ${data.color};`}>
+    <div class="eyebrow" style={`color: ${data.color}; opacity: 0.7`}>Crystal Path · Element {data.num}</div>
+    <div class="element-icon" style={`color: ${data.color}; filter: drop-shadow(0 0 16px ${data.glowColor})`}>{data.icon}</div>
+    <h1 style={`color: ${data.color}; text-shadow: 0 0 40px ${data.glowColor}, 0 0 80px ${data.glowColor}`}>{data.name}</h1>
+    <div class="keyword" style={`color: ${data.color}; opacity: 0.6`}>{data.keyword} · {data.chakra}</div>
+    <p class="tagline">{data.tagline}</p>
+  </div>
+
+  <div class="content-grid">
+    <div class="main-content">
+
+      <section class="desc-section">
+        <p class="desc">{data.desc}</p>
+      </section>
+
+      {data.shearBelow && (
+        <section class="shear-section" style={`border-left-color: ${data.color}66`}>
+          <div class="shear-label" style={`color: ${data.color}; opacity: 0.7`}>↓ {data.shearBelow}</div>
+          <p class="shear-desc">{data.shearBelowDesc}</p>
+        </section>
+      )}
+
+    </div>
+
+    <div class="sidebar">
+
+      <div class="sidebar-card">
+        <div class="sidebar-label">Practices</div>
+        <ul class="practice-list">
+          {data.practices.map(p => (
+            <li style={`border-left-color: ${data.color}44`}>{p}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-label">Connected concepts</div>
+        <div class="tag-list">
+          {data.connections.map(c => (
+            <span class="tag" style={`border-color: ${data.color}44; color: ${data.color}; opacity: 0.8`}>{c}</span>
+          ))}
+        </div>
+      </div>
+
+      <a href="/system" class="back-link">← Back to The System</a>
+
+    </div>
+  </div>
+
+  <!-- ELEMENT NAV -->
+  <nav class="element-nav">
+    <div class="section-label">All elements</div>
+    <div class="element-nav-grid">
+      {Object.entries(elements).map(([key, el]) => (
+        <a href={`/system/${key}`}
+           class={`element-nav-item ${key === element ? 'active' : ''}`}
+           style={key === element ? `border-color: ${el.color}; background: ${el.color}11` : ''}>
+          <span class="nav-icon" style={key === element ? `color: ${el.color}` : ''}>{el.icon}</span>
+          <span class="nav-name" style={key === element ? `color: ${el.color}` : ''}>{el.name}</span>
+          <span class="nav-num" style={key === element ? `color: ${el.color}; opacity: 0.6` : ''}>{el.num}</span>
+        </a>
+      ))}
+    </div>
+  </nav>
+
+  <footer>
+    <div class="footer-logo">Myathe Magick System</div>
+    <div class="footer-links">
+      <a href="https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" target="_blank">YouTube</a>
+      <a href="https://myathemagick.substack.com/" target="_blank">Substack</a>
+      <a href="https://ko-fi.com/myathemagick" target="_blank">Ko-fi</a>
+      <a href="https://www.facebook.com/profile.php?id=61563102456940" target="_blank">Facebook</a>
+      <a href="https://x.com/MyatheMagick" target="_blank">X</a>
+    </div>
+  </footer>
+
+</Layout>
+
+<style>
+  :global(body) { overflow-x: hidden; }
+
+  .page-header {
+    padding: 56px 40px 48px 52px;
+    border-bottom: 1px solid rgba(139,92,246,0.08);
+    margin: 40px 40px 0 40px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    margin-bottom: 20px;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  }
+  .element-icon {
+    font-size: 3.5rem;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 400;
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+  }
+  .keyword {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .tagline {
+    font-size: 16px;
+    color: #9d8ab5;
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 560px;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 1px;
+    background: rgba(139,92,246,0.06);
+    margin: 40px;
+  }
+
+  .main-content {
+    background: #09090f;
+    padding: 40px;
+  }
+  .desc-section { margin-bottom: 40px; }
+  .desc {
+    font-size: 16px;
+    color: #9d8ab5;
+    line-height: 2;
+    font-weight: 300;
+  }
+
+  .shear-section {
+    padding: 24px;
+    border: 1px solid rgba(139,92,246,0.1);
+    border-left-width: 3px;
+    background: rgba(255,255,255,0.01);
+  }
+  .shear-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .shear-desc {
+    font-size: 14px;
+    color: #7c6a99;
+    line-height: 1.8;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .sidebar {
+    background: #09090f;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .sidebar-card {
+    padding: 20px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(139,92,246,0.1);
+  }
+  .sidebar-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: #7c6a99;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .practice-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .practice-list li {
+    font-size: 13px;
+    color: #9d8ab5;
+    line-height: 1.6;
+    font-weight: 300;
+    padding-left: 12px;
+    border-left: 2px solid;
+  }
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border: 1px solid;
+    font-family: 'Cinzel', serif;
+    transition: opacity 0.15s;
+  }
+  .tag:hover { opacity: 1 !important; }
+  .back-link {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: #6d5a8a;
+    text-decoration: none;
+    transition: color 0.15s;
+    margin-top: auto;
+  }
+  .back-link:hover { color: #c4b5fd; }
+
+  /* ELEMENT NAV */
+  .element-nav {
+    padding: 48px 40px;
+    border-top: 1px solid rgba(139,92,246,0.06);
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #6d5a8a;
+    margin-bottom: 24px;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  }
+  .element-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    background: rgba(139,92,246,0.06);
+  }
+  .element-nav-item {
+    background: #09090f;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid transparent;
+    transition: background 0.15s;
+  }
+  .element-nav-item:hover { background: rgba(109,40,217,0.06); }
+  .nav-icon { font-size: 14px; color: #4c3d6e; }
+  .nav-name {
+    font-size: 12px;
+    color: #7c6a99;
+    font-family: 'Cinzel', serif;
+    flex: 1;
+  }
+  .nav-num {
+    font-size: 10px;
+    color: #4c3d6e;
+    font-family: 'Cinzel', serif;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(139,92,246,0.08);
+  }
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #6d5a8a;
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #6d5a8a;
+    font-family: 'Cinzel', serif;
+    transition: color 0.15s;
+    text-decoration: none;
+  }
+  .footer-links a:hover { color: #c4b5fd; }
+
+  @media (max-width: 800px) {
+    .page-header { margin: 20px; padding: 32px 20px 32px 20px; }
+    .content-grid { grid-template-columns: 1fr; margin: 20px; }
+    .main-content { padding: 28px 20px; }
+    .sidebar { padding: 24px 20px; }
+    .element-nav { padding: 36px 20px; }
+    .element-nav-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    footer { flex-direction: column; gap: 20px; text-align: center; padding: 28px 24px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
