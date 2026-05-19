@@ -1,0 +1,392 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allWriting = await getCollection('writing');
+const essays = allWriting.filter(w => w.data.type === 'essay').sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const books = allWriting.filter(w => w.data.type === 'book');
+---
+
+<Layout title="Writing">
+
+  <div class="page-header">
+    <div class="eyebrow">Writing</div>
+    <h1>Essays & books</h1>
+    <p class="intro">Long-form investigations into the Myathe Magick System — essays on Substack and books available on Ko-fi.</p>
+  </div>
+
+  <!-- ESSAYS -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-label">Essays</div>
+      <a href="https://myathemagick.substack.com" target="_blank" class="section-more">All essays on Substack ↗</a>
+    </div>
+    <div class="section-desc">Published on Substack. Each essay is an expanded investigation into a concept from the System.</div>
+
+    <div class="essays-grid">
+      {essays.map(essay => (
+        <a href={essay.data.externalUrl} target="_blank" class="essay-card">
+          <div class="essay-cover">
+            <img src={essay.data.coverUrl} alt={essay.data.title} loading="lazy"/>
+            <div class="essay-platform">{essay.data.platform}</div>
+          </div>
+          <div class="essay-body">
+            <div class="essay-date">
+              {essay.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </div>
+            <div class="essay-title">{essay.data.title}</div>
+            <div class="essay-desc">{essay.data.description}</div>
+            <div class="essay-link">Read on {essay.data.platform} ↗</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- BOOKS -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-label">Books</div>
+    </div>
+    <div class="section-desc">Available on Ko-fi.</div>
+
+    <div class="books-grid">
+      {books.map(book => (
+        <a href={book.data.externalUrl} target="_blank" class="book-card">
+          <div class="book-cover">
+            <img src={book.data.coverUrl} alt={book.data.title} loading="lazy"/>
+          </div>
+          <div class="book-body">
+            <div class="book-platform">{book.data.platform}</div>
+            <div class="book-title">{book.data.title}</div>
+            <div class="book-desc">{book.data.description}</div>
+            <div class="book-link">Get it on {book.data.platform} ↗</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- SUBSTACK CTA -->
+  <section class="subscribe-section">
+    <div class="subscribe-inner">
+      <div class="subscribe-eyebrow">Stay in the loop</div>
+      <div class="subscribe-title">Essays delivered to your inbox</div>
+      <div class="subscribe-desc">New essays on the Myathe Magick System, chaos magick frontiers, and ideas at the edge of the map. Published on Substack.</div>
+      <a href="https://myathemagick.substack.com" target="_blank" class="subscribe-btn">Subscribe on Substack ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Myathe Magick System</div>
+    <div class="footer-links">
+      <a href="https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" target="_blank">YouTube</a>
+      <a href="https://myathemagick.substack.com/" target="_blank">Substack</a>
+      <a href="https://ko-fi.com/myathemagick" target="_blank">Ko-fi</a>
+      <a href="https://www.facebook.com/profile.php?id=61563102456940" target="_blank">Facebook</a>
+      <a href="https://x.com/MyatheMagick" target="_blank">X</a>
+    </div>
+  </footer>
+
+</Layout>
+
+<style>
+  :global(body) { overflow-x: hidden; }
+
+  .page-header {
+    padding: 64px 40px 48px;
+    border-bottom: 1px solid rgba(139,92,246,0.08);
+    max-width: 700px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #6d5a8a;
+    margin-bottom: 16px;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: #f0ecff;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+  .intro {
+    font-size: 16px;
+    color: #7c6a99;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 56px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #6d5a8a;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  }
+  .section-more {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #4c3d6e;
+    font-family: 'Cinzel', serif;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .section-more:hover { color: #9d8cd4; }
+  .section-desc {
+    font-size: 13px;
+    color: #4c3d6e;
+    font-weight: 300;
+    margin-bottom: 32px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ESSAYS GRID */
+  .essays-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1px;
+    background: rgba(139,92,246,0.06);
+  }
+  .essay-card {
+    background: #09090f;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+    display: block;
+  }
+  .essay-card:hover { background: rgba(109,40,217,0.05); }
+  .essay-cover {
+    position: relative;
+    overflow: hidden;
+  }
+  .essay-cover img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+  .essay-card:hover .essay-cover img { opacity: 1; }
+  .essay-platform {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: #c4b5fd;
+    background: rgba(9,9,15,0.8);
+    padding: 4px 8px;
+    border: 1px solid rgba(139,92,246,0.3);
+  }
+  .essay-body { padding: 24px; }
+  .essay-date {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #4c3d6e;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 10px;
+  }
+  .essay-title {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    color: #c4b5fd;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    letter-spacing: 0.03em;
+    transition: color 0.15s;
+  }
+  .essay-card:hover .essay-title { color: #e2d9f3; }
+  .essay-desc {
+    font-size: 13px;
+    color: #7c6a99;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+  .essay-link {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #4c3d6e;
+    font-family: 'Cinzel', serif;
+    transition: color 0.15s;
+  }
+  .essay-card:hover .essay-link { color: #9d8cd4; }
+
+  /* BOOKS GRID */
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 1px;
+    background: rgba(139,92,246,0.06);
+  }
+  .book-card {
+    background: #09090f;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0;
+  }
+  .book-card:hover { background: rgba(109,40,217,0.05); }
+  .book-cover {
+    overflow: hidden;
+  }
+  .book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+  .book-card:hover .book-cover img { opacity: 1; }
+  .book-body {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+  .book-platform {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: #fbbf24;
+    font-family: 'Cinzel', serif;
+    border: 1px solid rgba(251,191,36,0.2);
+    padding: 3px 8px;
+    width: fit-content;
+  }
+  .book-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: #c4b5fd;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+  }
+  .book-desc {
+    font-size: 14px;
+    color: #7c6a99;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .book-link {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #4c3d6e;
+    font-family: 'Cinzel', serif;
+    transition: color 0.15s;
+    margin-top: 8px;
+  }
+  .book-card:hover .book-link { color: #fbbf24; }
+
+  /* SUBSCRIBE */
+  .subscribe-section {
+    padding: 72px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .subscribe-inner {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .subscribe-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #6d5a8a;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  }
+  .subscribe-title {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    color: #f0ecff;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+  .subscribe-desc {
+    font-size: 15px;
+    color: #7c6a99;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .subscribe-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: #c4b5fd;
+    border: 1px solid rgba(167,139,250,0.35);
+    padding: 12px 28px;
+    background: rgba(109,40,217,0.14);
+    text-decoration: none;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+  .subscribe-btn:hover { background: rgba(109,40,217,0.28); }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(139,92,246,0.08);
+  }
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #6d5a8a;
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #6d5a8a;
+    font-family: 'Cinzel', serif;
+    transition: color 0.15s;
+    text-decoration: none;
+  }
+  .footer-links a:hover { color: #c4b5fd; }
+
+  @media (max-width: 800px) {
+    .page-header { padding: 40px 24px 32px; }
+    .section { padding: 40px 24px; }
+    .essays-grid { grid-template-columns: 1fr; }
+    .books-grid { grid-template-columns: 1fr; }
+    .book-card { grid-template-columns: 1fr; }
+    .book-cover img { aspect-ratio: 16/9; height: auto; }
+    .subscribe-section { padding: 48px 24px; }
+    footer {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+      padding: 28px 24px;
+    }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>

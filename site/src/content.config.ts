@@ -29,4 +29,18 @@ const music = defineCollection({
   }),
 });
 
-export const collections = { videos, music };
+const writing = defineCollection({
+  loader: glob({ pattern: '*.md', base: 'src/content/writing' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    type: z.string(),
+    description: z.string(),
+    coverUrl: z.string(),
+    externalUrl: z.string(),
+    platform: z.string(),
+    featured: z.boolean(),
+  }),
+});
+
+export const collections = { videos, music, writing };
