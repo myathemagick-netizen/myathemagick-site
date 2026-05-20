@@ -1,0 +1,558 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const lineage = [
+  {
+    name: "Austin Osman Spare",
+    category: "Chaos Magick",
+    desc: "The originator of sigilization and the concept of the Kia — the void-self beneath all constructed identity. Spare's method of encoding intent before the conscious mind can capture it is the direct ancestor of the System's approach to the Logos/Shadow layer.",
+    url: "https://en.wikipedia.org/wiki/Austin_Osman_Spare"
+  },
+  {
+    name: "Peter Carroll",
+    category: "Chaos Magick",
+    desc: "Carroll formalized chaos magick as a discipline and began edging it toward mathematics and quantum probability. The System takes that vector further — into torsion field physics, discrete time, and the structure of chronons.",
+    url: "https://en.wikipedia.org/wiki/Peter_J._Carroll"
+  },
+  {
+    name: "Genesis P-Orridge",
+    category: "Chaos Magick",
+    desc: "P-Orridge took chaos magick into the body and into television — pandrogeny as magical operation, the media as ritual space. The System takes that same move into VR and AI.",
+    url: "https://en.wikipedia.org/wiki/Genesis_P-Orridge"
+  },
+  {
+    name: "Grant Morrison",
+    category: "Chaos Magick",
+    desc: "Morrison's hypersigil work — The Invisibles as a living magical operation — is the direct ancestor of the MTA project. The ARG as hypersigil, the fictional frame as magical technology.",
+    url: "https://en.wikipedia.org/wiki/Grant_Morrison"
+  },
+  {
+    name: "Paul Laffoley",
+    category: "Sacred Geometry",
+    desc: "Laffoley's dense, systematized paintings — diagrams of everything, maps of the impossible — are the closest visual analogue to what the Myathe Magick System is trying to do in built form. The diagram as argument, the map as transmission.",
+    url: "https://en.wikipedia.org/wiki/Paul_Laffoley"
+  },
+  {
+    name: "Buckminster Fuller",
+    category: "Sacred Geometry",
+    desc: "Fuller's geodesic geometry and the icosahedron as a structural principle underlies the entire riftline network model. Synergetics — the geometry of thinking — is a direct ancestor of the Crystal Path's geometric foundation.",
+    url: "https://en.wikipedia.org/wiki/Buckminster_Fuller"
+  },
+  {
+    name: "José Argüelles",
+    category: "Sacred Geometry",
+    desc: "Argüelles' Tzolkin work and the Mayan calendar system as a map of novelty-time connects directly to the chronon model. The Dreamspell as a technology for tracking temporal shear zones.",
+    url: "https://en.wikipedia.org/wiki/Jos%C3%A9_Arg%C3%BCelles"
+  },
+  {
+    name: "Nikolai Kozyrev",
+    category: "Fringe Science",
+    desc: "Kozyrev's torsion field experiments — time as a physical phenomenon with measurable properties — are the scientific foundation of the riftline model. His work on the directionality of time connects directly to the counter-rotation thesis.",
+    url: "https://en.wikipedia.org/wiki/Nikolai_Kozyrev"
+  },
+  {
+    name: "Wilhelm Reich",
+    category: "Fringe Science",
+    desc: "Reich's orgone energy — the life force as a measurable, directable field — is an ancestor of the torsion field model and the Body circuit's understanding of somatic energy flow.",
+    url: "https://en.wikipedia.org/wiki/Wilhelm_Reich"
+  },
+  {
+    name: "William S. Burroughs",
+    category: "Philosophy / Literature",
+    desc: "Burroughs understood that language is a virus — that the Logos/Shadow layer is a control system operating below conscious awareness. The cut-up method as a technology for disrupting that control is central to the System's approach to the memetic layer.",
+    url: "https://en.wikipedia.org/wiki/William_S._Burroughs"
+  },
+  {
+    name: "Brion Gysin",
+    category: "Philosophy / Literature",
+    desc: "Gysin's development of the cut-up method with Burroughs and the Dreamachine as a consciousness technology point directly toward the Virtual Dream Machine and the System's approach to perception.",
+    url: "https://en.wikipedia.org/wiki/Brion_Gysin"
+  },
+  {
+    name: "Robert Anton Wilson",
+    category: "Philosophy / Literature",
+    desc: "Wilson's reality tunnels, his synthesis of Korzybski and Leary, and his insistence on holding multiple contradictory models simultaneously are foundational to the System's epistemology. Maybe Logic as the operating system.",
+    url: "https://en.wikipedia.org/wiki/Robert_Anton_Wilson"
+  },
+  {
+    name: "Alfred Jarry",
+    category: "Philosophy / Literature",
+    desc: "The inventor of Pataphysics — the science of imaginary solutions, the study of exceptions rather than rules. The System operates explicitly in the pataphysical register: taking the exceptions seriously, building from the edges inward.",
+    url: "https://en.wikipedia.org/wiki/Alfred_Jarry"
+  },
+  {
+    name: "Salvador Dalí",
+    category: "Art / Visionary",
+    desc: "Three years at the Dalí Museum as a docent offered direct immersion in Dalí's symbolic vocabulary, his paranoid-critical method, and his refusal to separate the scientific from the surreal. The System's aesthetic owes a direct debt.",
+    url: "https://en.wikipedia.org/wiki/Salvador_Dal%C3%AD"
+  },
+  {
+    name: "Alex Grey",
+    category: "Art / Visionary",
+    desc: "Grey's visionary anatomical paintings map consciousness and energy through the body in a way that directly parallels the Crystal Path's seven circuits. In 2007, shown an early Crystal Path diagram, Grey encouraged the work to continue.",
+    url: "https://en.wikipedia.org/wiki/Alex_Grey"
+  },
+  {
+    name: "Terence McKenna",
+    category: "Other",
+    desc: "McKenna's Timewave Zero — novelty as a measurable property of time, the fractal structure of history — is a direct ancestor of the chronon model. His insistence on taking the edges of experience seriously shaped the System's epistemological stance.",
+    url: "https://en.wikipedia.org/wiki/Terence_McKenna"
+  },
+  {
+    name: "Carl Jung",
+    category: "Other",
+    desc: "Jung's model of the psyche — the unconscious as a structured system, synchronicity as meaningful coincidence, individuation as the central project — underlies the Crystal Path's psychological architecture.",
+    url: "https://en.wikipedia.org/wiki/Carl_Jung"
+  },
+  {
+    name: "Carlos Castaneda",
+    category: "Other",
+    desc: "Castaneda's accounts of non-ordinary perception and the assemblage point as a moveable center of awareness connect to the System's model of consciousness and the possibility of shifting between probability states.",
+    url: "https://en.wikipedia.org/wiki/Carlos_Castaneda"
+  },
+  {
+    name: "Nicholas Roerich",
+    category: "Other",
+    desc: "Roerich's expeditions to Central Asia and his paintings of sacred geography — Kailash, the Himalayas as a spiritual axis — connect directly to the riftline model and the System's understanding of sacred sites as chronon flow points.",
+    url: "https://en.wikipedia.org/wiki/Nicholas_Roerich"
+  },
+];
+
+const categories = [...new Set(lineage.map(l => l.category))];
+
+const projects = [
+  { name: "myathemagick.com", desc: "This site — the canonical home of the System.", url: "/" },
+  { name: "Audio Shear Zone", desc: "Binaural attunement engine with Live Earth Sync.", url: "https://myathemagick-netizen.github.io/audio-shear-zone/" },
+  { name: "RiVViT", desc: "Interactive VR globe mapping the icosahedral riftline network.", url: "https://myathemagick-netizen.github.io/RiVViT/" },
+  { name: "YouTube Channel", desc: "Essay videos, music, and Nyx Nightshade transmissions.", url: "https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" },
+  { name: "Hacking Reality", desc: "A practical manual for integrating AI into chaos magick practice.", url: "https://ko-fi.com/s/06da22b151" },
+  { name: "The Crystal Path Course", desc: "A seven-module curriculum ascending the Crystal Path. In development.", url: "/system" },
+];
+---
+
+<Layout title="About">
+
+  <!-- ORIGIN -->
+  <div class="page-header">
+    <div class="eyebrow">About</div>
+    <h1>The transmission<br><em>and its origins</em></h1>
+  </div>
+
+  <section class="origin-section">
+    <div class="origin-grid">
+      <div class="origin-main">
+        <div class="section-label">Origin</div>
+        <div class="origin-text">
+          <p>The Myathe Magick System began as a sketch — a grid of hexagons with elemental associations drawn from Final Fantasy's crystal system. That was thirty years ago. The hexagons are still there, now carrying the weight of sacred geometry, torsion field physics, chaos magick theory, Jungian psychology, Mayan cosmology, and the structure of time itself.</p>
+          <p>The Crystal Path developed independently, without knowledge of the chakra systems it would later be mapped against, without knowledge of the riftline geography it would later describe. It arrived as a diagram and spent thirty years becoming a system.</p>
+          <p>From 2013 to 2016, volunteer and docent work at the Salvador Dalí Museum offered direct immersion in Dalí's symbolic vocabulary, his paranoid-critical method, and his refusal to separate the scientific from the surreal. The System's aesthetic owes a direct debt.</p>
+          <p>In 2007, an early Crystal Path diagram was shown to Alex Grey. His response: "Do something with this idea." The system has been doing something with it ever since.</p>
+        </div>
+      </div>
+      <div class="origin-sidebar">
+        <div class="origin-stat">
+          <div class="stat-num">30</div>
+          <div class="stat-label">Years in development</div>
+        </div>
+        <div class="origin-stat">
+          <div class="stat-num">7</div>
+          <div class="stat-label">Crystal Path elements</div>
+        </div>
+        <div class="origin-stat">
+          <div class="stat-num">20</div>
+          <div class="stat-label">Icosahedral riftlines</div>
+        </div>
+        <div class="origin-stat">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Dragons at the edge</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE WORK -->
+  <section class="work-section">
+    <div class="section-label">The work</div>
+    <div class="work-text">
+      <p>Peter Carroll edged chaos magick toward mathematics and quantum probability. Genesis P-Orridge took it into the body and television. The Myathe Magick System takes it further — into VR, AI, torsion field physics, and the pataphysical edges of what can be formally known.</p>
+      <p>The System is not a replacement for existing magical traditions. It is an extension of the chaos magick project: the insistence that any model is valid if it works, that the edges of experience are more interesting than the center, that the practitioner is the laboratory. What changes is the toolkit — AI as sigilization engine, VR as ritual space, real-time planetary data as magical feedback, the hypersigil as ARG.</p>
+      <p>The work is levogyric. The goal is mesogyric. The system continues.</p>
+    </div>
+  </section>
+
+  <!-- LINEAGE -->
+  <section class="lineage-section">
+    <div class="section-label">Lineage</div>
+    <p class="section-desc">The intellectual ancestors of the System — where the ideas came from and how they connect. This list is incomplete and always growing.</p>
+
+    {categories.map(cat => (
+      <div class="lineage-category">
+        <div class="cat-label">{cat}</div>
+        <div class="lineage-grid">
+          {lineage.filter(l => l.category === cat).map(person => (
+            <a href={person.url} target="_blank" class="person-card">
+              <div class="person-name">{person.name}</div>
+              <div class="person-desc">{person.desc}</div>
+              <div class="person-link">↗ Learn more</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <!-- CURRENT PROJECTS -->
+  <section class="projects-section">
+    <div class="section-label">Current projects</div>
+    <div class="projects-grid">
+      {projects.map(p => (
+        <a href={p.url} class="project-card" target={p.url.startsWith('http') ? '_blank' : '_self'}>
+          <div class="project-name">{p.name}</div>
+          <div class="project-desc">{p.desc}</div>
+          <div class="project-link">↗</div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- CONNECT -->
+  <section class="connect-section">
+    <div class="section-label">Connect</div>
+    <p class="section-desc">Follow the work across platforms. New essays on Substack, videos on YouTube, tools on GitHub.</p>
+    <div class="connect-grid">
+      <a href="https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" target="_blank" class="connect-card">
+        <div class="connect-name">YouTube</div>
+        <div class="connect-desc">Essay videos, music, and Nyx Nightshade transmissions</div>
+        <div class="connect-link">↗ Subscribe</div>
+      </a>
+      <a href="https://myathemagick.substack.com/" target="_blank" class="connect-card">
+        <div class="connect-name">Substack</div>
+        <div class="connect-desc">Essays and expanded investigations — delivered to your inbox</div>
+        <div class="connect-link">↗ Subscribe</div>
+      </a>
+      <a href="https://ko-fi.com/myathemagick" target="_blank" class="connect-card">
+        <div class="connect-name">Ko-fi</div>
+        <div class="connect-desc">Support the work · closer access · draft drops and BTS</div>
+        <div class="connect-link">↗ Support</div>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61563102456940" target="_blank" class="connect-card">
+        <div class="connect-name">Facebook</div>
+        <div class="connect-desc">Daily posts, memes, community discussion</div>
+        <div class="connect-link">↗ Follow</div>
+      </a>
+      <a href="https://x.com/MyatheMagick" target="_blank" class="connect-card">
+        <div class="connect-name">X / Twitter</div>
+        <div class="connect-desc">Short transmissions, threads, connective tissue posts</div>
+        <div class="connect-link">↗ Follow</div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Myathe Magick System</div>
+    <div class="footer-links">
+      <a href="https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" target="_blank">YouTube</a>
+      <a href="https://myathemagick.substack.com/" target="_blank">Substack</a>
+      <a href="https://ko-fi.com/myathemagick" target="_blank">Ko-fi</a>
+      <a href="https://www.facebook.com/profile.php?id=61563102456940" target="_blank">Facebook</a>
+      <a href="https://x.com/MyatheMagick" target="_blank">X</a>
+    </div>
+  </footer>
+
+</Layout>
+
+<style>
+  :global(body) { overflow-x: hidden; }
+
+  .page-header {
+    padding: 64px 40px 48px;
+    border-bottom: 1px solid rgba(139,92,246,0.08);
+  }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #6d5a8a;
+    margin-bottom: 16px;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 400;
+    color: #f0ecff;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    margin: 0;
+  }
+  h1 em {
+    font-style: italic;
+    font-family: 'Crimson Pro', serif;
+    color: #a78bfa;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #6d5a8a;
+    margin-bottom: 24px;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  }
+  .section-desc {
+    font-size: 14px;
+    color: #6d5a8a;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 32px;
+    max-width: 600px;
+  }
+
+  /* ORIGIN */
+  .origin-section {
+    padding: 56px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .origin-grid {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 48px;
+    align-items: start;
+  }
+  .origin-text p {
+    font-size: 16px;
+    color: #9d8ab5;
+    line-height: 2;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+  .origin-text p:last-child { margin-bottom: 0; }
+  .origin-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .origin-stat {
+    border-left: 2px solid rgba(139,92,246,0.2);
+    padding-left: 16px;
+  }
+  .stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    color: #9d8cd4;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #4c3d6e;
+    font-family: 'Cinzel', serif;
+  }
+
+  /* THE WORK */
+  .work-section {
+    padding: 56px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+    max-width: 760px;
+  }
+  .work-text p {
+    font-size: 16px;
+    color: #9d8ab5;
+    line-height: 2;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+  .work-text p:last-child { margin-bottom: 0; }
+
+  /* LINEAGE */
+  .lineage-section {
+    padding: 56px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .lineage-category {
+    margin-bottom: 48px;
+  }
+  .lineage-category:last-child { margin-bottom: 0; }
+  .cat-label {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: #4c3d6e;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .lineage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: rgba(139,92,246,0.06);
+  }
+  .person-card {
+    background: #09090f;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+    display: block;
+  }
+  .person-card:hover { background: rgba(109,40,217,0.05); }
+  .person-name {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: #c4b5fd;
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+    transition: color 0.15s;
+  }
+  .person-card:hover .person-name { color: #e2d9f3; }
+  .person-desc {
+    font-size: 13px;
+    color: #7c6a99;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 12px;
+  }
+  .person-link {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #3d2f5c;
+    font-family: 'Cinzel', serif;
+    transition: color 0.15s;
+  }
+  .person-card:hover .person-link { color: #7c6a99; }
+
+  /* PROJECTS */
+  .projects-section {
+    padding: 56px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: rgba(139,92,246,0.06);
+  }
+  .project-card {
+    background: #09090f;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .project-card:hover { background: rgba(109,40,217,0.05); }
+  .project-name {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: #c4b5fd;
+    letter-spacing: 0.04em;
+    transition: color 0.15s;
+  }
+  .project-card:hover .project-name { color: #e2d9f3; }
+  .project-desc {
+    font-size: 13px;
+    color: #7c6a99;
+    line-height: 1.6;
+    font-weight: 300;
+    flex: 1;
+  }
+  .project-link {
+    font-size: 14px;
+    color: #3d2f5c;
+    transition: color 0.15s;
+    margin-top: 4px;
+  }
+  .project-card:hover .project-link { color: #9d8cd4; }
+
+  /* CONNECT */
+  .connect-section {
+    padding: 56px 40px;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .connect-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1px;
+    background: rgba(139,92,246,0.06);
+  }
+  .connect-card {
+    background: #09090f;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .connect-card:hover { background: rgba(109,40,217,0.05); }
+  .connect-name {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: #c4b5fd;
+    letter-spacing: 0.04em;
+  }
+  .connect-desc {
+    font-size: 13px;
+    color: #7c6a99;
+    line-height: 1.6;
+    font-weight: 300;
+    flex: 1;
+  }
+  .connect-link {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #4c3d6e;
+    font-family: 'Cinzel', serif;
+    transition: color 0.15s;
+  }
+  .connect-card:hover .connect-link { color: #9d8cd4; }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(139,92,246,0.08);
+  }
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #6d5a8a;
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #6d5a8a;
+    font-family: 'Cinzel', serif;
+    transition: color 0.15s;
+    text-decoration: none;
+  }
+  .footer-links a:hover { color: #c4b5fd; }
+
+  @media (max-width: 800px) {
+    .page-header { padding: 40px 24px 32px; }
+    .origin-section, .work-section, .lineage-section,
+    .projects-section, .connect-section { padding: 40px 24px; }
+    .origin-grid { grid-template-columns: 1fr; }
+    .origin-sidebar { flex-direction: row; flex-wrap: wrap; gap: 16px; }
+    .lineage-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .connect-grid { grid-template-columns: 1fr 1fr; }
+    footer {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+      padding: 28px 24px;
+    }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
