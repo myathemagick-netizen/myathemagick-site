@@ -40,6 +40,7 @@ const writing = defineCollection({
     externalUrl: z.string(),
     platform: z.string(),
     featured: z.boolean(),
+    paid: z.boolean().optional(),
   }),
 });
 

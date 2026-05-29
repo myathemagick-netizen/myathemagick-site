@@ -1,6 +1,6 @@
 ---
 import Nav from '../components/Nav.astro';
-const { title = "Home" } = Astro.props;
+const { title = "Home", description = "A living system at the intersection of sacred geometry, chaos magick, torsion field physics, and the structure of time itself." } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -8,6 +8,7 @@ const { title = "Home" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
     <title>{title} · Myathe Magick</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">

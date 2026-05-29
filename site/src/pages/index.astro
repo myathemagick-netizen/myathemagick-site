@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Home">
@@ -102,32 +103,32 @@ import Layout from '../layouts/Layout.astro';
     <div class="section-label">The Crystal Path</div>
     <div class="cp-stack">
       <a href="/system#chaos" class="cp-node">
-        <div class="cp-left"><span class="cp-icon">∞</span><div><div class="cp-name">Chaos / Spirit</div><div class="cp-sub">Crown · dissolution · the field beyond form</div></div></div>
-        <span class="cp-num">VII</span>
+        <div class="cp-left"><span class="cp-icon">∞</span><div><div class="cp-name">Chaos / Spirit</div><div class="cp-sub">Crown · Spiritual Circuit · the source, pure potential, the Kia · the generative void before all structure</div></div></div>
+        <span class="cp-num">I</span>
       </a>
       <a href="/system#cosmos" class="cp-node">
-        <div class="cp-left"><span class="cp-icon">✦</span><div><div class="cp-name">Cosmos / Light</div><div class="cp-sub">Third Eye · chronon flow · riftline perception</div></div></div>
-        <span class="cp-num">VI</span>
+        <div class="cp-left"><span class="cp-icon">✦</span><div><div class="cp-name">Cosmos / Light</div><div class="cp-sub">Third Eye · Integral Circuit · consciousness and awareness · chronon perception · seeing what is without distortion</div></div></div>
+        <span class="cp-num">II</span>
       </a>
       <a href="/system#ethos" class="cp-node">
-        <div class="cp-left"><span class="cp-icon">⟡</span><div><div class="cp-name">Ethos / Will</div><div class="cp-sub">Throat · directed intent · sigilization</div></div></div>
-        <span class="cp-num">V</span>
+        <div class="cp-left"><span class="cp-icon">⟡</span><div><div class="cp-name">Ethos / Will</div><div class="cp-sub">Throat · Causal Circuit · directed intention · sigilization · the focused impulse that initiates the cascade</div></div></div>
+        <span class="cp-num">III</span>
       </a>
       <a href="/system#noos" class="cp-node">
-        <div class="cp-left"><span class="cp-icon">⬡</span><div><div class="cp-name">Noos / Mind</div><div class="cp-sub">Heart · resonance · sacred geometry</div></div></div>
+        <div class="cp-left"><span class="cp-icon">⬡</span><div><div class="cp-name">Noos / Mind</div><div class="cp-sub">Heart · Mental Circuit · conceptualization and rationalization · sacred geometry · mind at the boundary of its own knowing</div></div></div>
         <span class="cp-num">IV</span>
       </a>
       <a href="/system#pathos" class="cp-node">
-        <div class="cp-left"><span class="cp-icon">◈</span><div><div class="cp-name">Pathos / Heart</div><div class="cp-sub">Solar Plexus · Egoform dissolution · alchemical fire</div></div></div>
-        <span class="cp-num">III</span>
+        <div class="cp-left"><span class="cp-icon">◈</span><div><div class="cp-name">Pathos / Heart</div><div class="cp-sub">Solar Plexus · Emotional-Neurochemical Circuit · feeling and meaning · Egoform dissolution · alchemical fire</div></div></div>
+        <span class="cp-num">V</span>
       </a>
       <a href="/system#bios" class="cp-node">
-        <div class="cp-left"><span class="cp-icon">◉</span><div><div class="cp-name">Bios / Body</div><div class="cp-sub">Sacral · torsion field grounding · earth current</div></div></div>
-        <span class="cp-num">II</span>
+        <div class="cp-left"><span class="cp-icon">◉</span><div><div class="cp-name">Bios / Body</div><div class="cp-sub">Sacral · Physical-Sexual Circuit · somatic action and vitality · torsion field grounding · earth current</div></div></div>
+        <span class="cp-num">VI</span>
       </a>
       <a href="/system#logos" class="cp-node">
-        <div class="cp-left"><span class="cp-icon">▽</span><div><div class="cp-name">Logos / Shadow</div><div class="cp-sub">Root · Symbolic-Linguistic Circuit · the memetic layer · language as the simulation of reality</div></div></div>
-        <span class="cp-num">I</span>
+        <div class="cp-left"><span class="cp-icon">▽</span><div><div class="cp-name">Logos / Shadow</div><div class="cp-sub">Root · Symbolic-Linguistic Circuit · expression, communication, the memetic layer · language as the simulation of reality</div></div></div>
+        <span class="cp-num">VII</span>
       </a>
     </div>
   </section>
@@ -152,16 +153,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
 <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">Myathe Magick System</div>
-    <div class="footer-links">
-      <a href="https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" target="_blank">YouTube</a>
-      <a href="https://myathemagick.substack.com/" target="_blank">Substack</a>
-      <a href="https://ko-fi.com/myathemagick" target="_blank">Ko-fi</a>
-      <a href="https://www.facebook.com/profile.php?id=61563102456940" target="_blank">Facebook</a>
-      <a href="https://x.com/MyatheMagick" target="_blank">X</a>
-    </div>
-  </footer>
+  <Footer />
 
 </Layout>
 
@@ -384,30 +376,6 @@ import Layout from '../layouts/Layout.astro';
   .tool-link { font-size: 11px; letter-spacing: 0.2em; color: #4c3d6e; font-family: 'Cinzel', serif; }
   .tool-card:hover .tool-link { color: #9d8cd4; }
 
-  /* FOOTER */
-  footer {
-    padding: 32px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(139,92,246,0.08);
-  }
-  .footer-logo {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: #3d2f5c;
-  }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: #3d2f5c;
-    font-family: 'Cinzel', serif;
-    transition: color 0.15s;
-  }
-  .footer-links a:hover { color: #6d5a8a; }
-
   /* MOBILE */
   @media (max-width: 800px) {
     .hero {
@@ -453,16 +421,6 @@ import Layout from '../layouts/Layout.astro';
     }
     .tool-card {
       padding: 28px 24px;
-    }
-    footer {
-      flex-direction: column;
-      gap: 20px;
-      text-align: center;
-      padding: 28px 24px;
-    }
-    .footer-links {
-      flex-wrap: wrap;
-      justify-content: center;
     }
 	nav {
       padding: 14px 16px;

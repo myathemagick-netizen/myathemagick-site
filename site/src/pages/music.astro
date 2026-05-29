@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
 const allTracks = await getCollection('music');
@@ -93,16 +94,7 @@ const sorted = allTracks.sort((a, b) => {
     </div>
   </div>
 
-  <footer>
-    <div class="footer-logo">Myathe Magick System</div>
-    <div class="footer-links">
-      <a href="https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" target="_blank">YouTube</a>
-      <a href="https://myathemagick.substack.com/" target="_blank">Substack</a>
-      <a href="https://ko-fi.com/myathemagick" target="_blank">Ko-fi</a>
-      <a href="https://www.facebook.com/profile.php?id=61563102456940" target="_blank">Facebook</a>
-      <a href="https://x.com/MyatheMagick" target="_blank">X</a>
-    </div>
-  </footer>
+  <Footer />
 
 </Layout>
 
@@ -530,31 +522,7 @@ function loadCoverArt(url) {
   }
   .mta-link:hover { color: #7c6a99; }
 
-  /* FOOTER */
-  footer {
-    padding: 32px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(139,92,246,0.08);
-    margin-bottom: 72px;
-  }
-  .footer-logo {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: #6d5a8a;
-  }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: #6d5a8a;
-    font-family: 'Cinzel', serif;
-    transition: color 0.15s;
-    text-decoration: none;
-  }
-  .footer-links a:hover { color: #c4b5fd; }
+  :global(footer) { margin-bottom: 72px; }
 
   @media (max-width: 800px) {
     .page-header {
@@ -576,13 +544,6 @@ function loadCoverArt(url) {
       gap: 12px;
     }
     .player-right { display: none; }
-    footer {
-      flex-direction: column;
-      gap: 20px;
-      text-align: center;
-      padding: 28px 24px;
-      margin-bottom: 100px;
-    }
-    .footer-links { flex-wrap: wrap; justify-content: center; }
+    :global(footer) { margin-bottom: 100px; }
   }
 </style>

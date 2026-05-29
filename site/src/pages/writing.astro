@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
 const allWriting = await getCollection('writing');
@@ -29,6 +30,7 @@ const books = allWriting.filter(w => w.data.type === 'book');
           <div class="essay-cover">
             <img src={essay.data.coverUrl} alt={essay.data.title} loading="lazy"/>
             <div class="essay-platform">{essay.data.platform}</div>
+            {essay.data.paid && <div class="essay-paid">Subscribers only</div>}
           </div>
           <div class="essay-body">
             <div class="essay-date">
@@ -77,16 +79,7 @@ const books = allWriting.filter(w => w.data.type === 'book');
     </div>
   </section>
 
-  <footer>
-    <div class="footer-logo">Myathe Magick System</div>
-    <div class="footer-links">
-      <a href="https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" target="_blank">YouTube</a>
-      <a href="https://myathemagick.substack.com/" target="_blank">Substack</a>
-      <a href="https://ko-fi.com/myathemagick" target="_blank">Ko-fi</a>
-      <a href="https://www.facebook.com/profile.php?id=61563102456940" target="_blank">Facebook</a>
-      <a href="https://x.com/MyatheMagick" target="_blank">X</a>
-    </div>
-  </footer>
+  <Footer />
 
 </Layout>
 
@@ -195,6 +188,18 @@ const books = allWriting.filter(w => w.data.type === 'book');
     background: rgba(9,9,15,0.8);
     padding: 4px 8px;
     border: 1px solid rgba(139,92,246,0.3);
+  }
+   .essay-paid {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: #fbbf24;
+    background: rgba(9,9,15,0.8);
+    padding: 4px 8px;
+    border: 1px solid rgba(251,191,36,0.3);
   }
   .essay-body { padding: 24px; }
   .essay-date {
@@ -348,31 +353,6 @@ const books = allWriting.filter(w => w.data.type === 'book');
   }
   .subscribe-btn:hover { background: rgba(109,40,217,0.28); }
 
-  /* FOOTER */
-  footer {
-    padding: 32px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(139,92,246,0.08);
-  }
-  .footer-logo {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: #6d5a8a;
-  }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: #6d5a8a;
-    font-family: 'Cinzel', serif;
-    transition: color 0.15s;
-    text-decoration: none;
-  }
-  .footer-links a:hover { color: #c4b5fd; }
-
   @media (max-width: 800px) {
     .page-header { padding: 40px 24px 32px; }
     .section { padding: 40px 24px; }
@@ -381,12 +361,5 @@ const books = allWriting.filter(w => w.data.type === 'book');
     .book-card { grid-template-columns: 1fr; }
     .book-cover img { aspect-ratio: 16/9; height: auto; }
     .subscribe-section { padding: 48px 24px; }
-    footer {
-      flex-direction: column;
-      gap: 20px;
-      text-align: center;
-      padding: 28px 24px;
-    }
-    .footer-links { flex-wrap: wrap; justify-content: center; }
   }
 </style>

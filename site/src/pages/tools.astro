@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
 
 const tools = [
   {
@@ -90,16 +91,7 @@ const tools = [
     </div>
   </div>
 
-  <footer>
-    <div class="footer-logo">Myathe Magick System</div>
-    <div class="footer-links">
-      <a href="https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" target="_blank">YouTube</a>
-      <a href="https://myathemagick.substack.com/" target="_blank">Substack</a>
-      <a href="https://ko-fi.com/myathemagick" target="_blank">Ko-fi</a>
-      <a href="https://www.facebook.com/profile.php?id=61563102456940" target="_blank">Facebook</a>
-      <a href="https://x.com/MyatheMagick" target="_blank">X</a>
-    </div>
-  </footer>
+  <Footer />
 
 </Layout>
 
@@ -235,29 +227,6 @@ const tools = [
   }
   .cs-desc { font-size: 13px; color: #2d2040; line-height: 1.7; font-weight: 300; }
 
-  footer {
-    padding: 32px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(139,92,246,0.08);
-  }
-  .footer-logo {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: #3d2f5c;
-  }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: #3d2f5c;
-    font-family: 'Cinzel', serif;
-    transition: color 0.15s;
-  }
-  .footer-links a:hover { color: #6d5a8a; }
-
   @media (max-width: 800px) {
     .page-header { padding: 40px 24px 32px; }
     .tool-row {
@@ -273,12 +242,5 @@ const tools = [
     .tool-right { justify-content: flex-start; }
     .cs-grid { grid-template-columns: 1fr; }
     .coming-soon { padding: 40px 24px; }
-    footer {
-      flex-direction: column;
-      gap: 20px;
-      text-align: center;
-      padding: 28px 24px;
-    }
-    .footer-links { flex-wrap: wrap; justify-content: center; }
   }
 </style>
