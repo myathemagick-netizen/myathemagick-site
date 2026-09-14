@@ -1,0 +1,178 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Footer from '../../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('atlas');
+const sorted = entries.sort((a, b) => a.data.order - b.data.order);
+
+const bookOrder = ['Introduction', 'Book One', 'Book Two', 'Book Three', 'Book Four', 'Book Five', 'Book Six', 'Closing Note'];
+const grouped = bookOrder.map(label => ({
+  label,
+  entries: sorted.filter(e => e.data.book === label),
+})).filter(g => g.entries.length > 0);
+---
+
+<Layout title="The Grid of Rifts and Vortices">
+
+  <div class="page-header">
+    <div class="eyebrow">The System · Atlas</div>
+    <h1>The Grid of Rifts and Vortices</h1>
+    <p class="intro">A Pataphysical Atlas of Chronon Geography — the full theoretical map of the icosahedral planetary grid: its physics, its corridors, its mythological record, and its practice.</p>
+    <p class="intro sub">Extracted and re-composed from the Myathe Magick System by Myathe.</p>
+  </div>
+
+  {grouped.map(({ label, entries }) => (
+    <section class="book-section">
+      <div class="section-label">{label}</div>
+      <div class="entry-list">
+        {entries.map(entry => {
+          const isSubfile = entry.id.includes('/');
+          return (
+            <a href={`/system/atlas/${entry.id}`} class={`entry-card${isSubfile ? ' subfile' : ''}`}>
+              <div class="entry-title">{entry.data.title}</div>
+              <div class="entry-desc">{entry.data.description}</div>
+              <div class="entry-link">Read →</div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  ))}
+
+  <div class="footer-nav">
+    <a href="/system" class="back-link">← The System</a>
+  </div>
+
+  <Footer />
+
+</Layout>
+
+<style>
+  :global(body) { overflow-x: hidden; }
+
+  .page-header {
+    padding: 64px 40px 48px;
+    border-bottom: 1px solid rgba(139,92,246,0.08);
+    max-width: 760px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #4c3d6e;
+    margin-bottom: 16px;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: #f0ecff;
+    margin-bottom: 20px;
+    letter-spacing: 0.04em;
+  }
+  .intro {
+    font-size: 16px;
+    color: #5a4f7a;
+    font-weight: 300;
+    line-height: 1.9;
+    max-width: 680px;
+  }
+  .intro.sub {
+    font-size: 13px;
+    margin-top: 12px;
+    color: #3d2f5c;
+  }
+
+  .book-section {
+    padding: 40px 40px 0;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+  }
+  .book-section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #4c3d6e;
+    margin-bottom: 20px;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  }
+
+  .entry-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(139,92,246,0.06);
+    margin-bottom: 40px;
+  }
+
+  .entry-card {
+    background: #09090f;
+    padding: 20px 24px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    transition: background 0.15s;
+  }
+  .entry-card:hover { background: rgba(109,40,217,0.06); }
+  .entry-card.subfile {
+    padding-left: 48px;
+    border-left: 2px solid rgba(139,92,246,0.12);
+  }
+
+  .entry-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    color: #c4b5fd;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.15s;
+  }
+  .entry-card:hover .entry-title { color: #e2d9f3; }
+
+  .entry-desc {
+    font-size: 12px;
+    color: #4c3d6e;
+    line-height: 1.6;
+    font-weight: 300;
+    flex: 1;
+  }
+
+  .entry-link {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #3d2f5c;
+    font-family: 'Cinzel', serif;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.15s;
+  }
+  .entry-card:hover .entry-link { color: #9d8cd4; }
+
+  .footer-nav {
+    padding: 40px 40px 48px;
+  }
+  .back-link {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: #4c3d6e;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .back-link:hover { color: #9d8cd4; }
+
+  @media (max-width: 800px) {
+    .page-header { padding: 40px 24px 32px; }
+    .book-section { padding: 32px 24px 0; }
+    .entry-card { flex-direction: column; gap: 6px; padding: 16px 20px; }
+    .entry-card.subfile { padding-left: 36px; }
+    .entry-desc { display: none; }
+    .footer-nav { padding: 32px 24px; }
+  }
+</style>

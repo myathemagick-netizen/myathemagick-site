@@ -44,4 +44,14 @@ const writing = defineCollection({
   }),
 });
 
-export const collections = { videos, music, writing };
+const atlas = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: 'src/content/atlas' }),
+  schema: z.object({
+    title: z.string(),
+    order: z.number(),
+    book: z.string(),
+    description: z.string(),
+  }),
+});
+
+export const collections = { videos, music, writing, atlas };

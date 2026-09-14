@@ -25,17 +25,77 @@ const currentPath = Astro.url.pathname;
     </svg>
     <span>Myathe Magick</span>
   </a>
+
   <div class="nav-links">
     {links.map(link => (
-      <a href={link.href} class={currentPath === link.href || currentPath.startsWith(link.href + '/') ? "active" : ""}>
+      <a href={link.href} class={currentPath.startsWith(link.href) ? "active" : ""}>
         {link.label}
       </a>
     ))}
   </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-inner">
+    {links.map(link => (
+      <a href={link.href} class={`mobile-link ${currentPath.startsWith(link.href) ? "active" : ""}`}>
+        <span class="mobile-link-num">
+          {links.indexOf(link) === 0 ? "01" :
+           links.indexOf(link) === 1 ? "02" :
+           links.indexOf(link) === 2 ? "03" :
+           links.indexOf(link) === 3 ? "04" :
+           links.indexOf(link) === 4 ? "05" : "06"}
+        </span>
+        {link.label}
+      </a>
+    ))}
+    <div class="mobile-footer-links">
+      <a href="https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" target="_blank">YouTube</a>
+      <a href="https://myathemagick.substack.com/" target="_blank">Substack</a>
+      <a href="https://ko-fi.com/myathemagick" target="_blank">Ko-fi</a>
+      <a href="https://x.com/MyatheMagick" target="_blank">X</a>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('open');
+    mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', !isOpen);
+  });
+
+  // Close menu when a link is clicked
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+    }
+  });
+</script>
+
 <style>
-  
   nav {
     display: flex;
     align-items: center;
@@ -46,7 +106,7 @@ const currentPath = Astro.url.pathname;
     top: 0;
     background: rgba(9,9,15,0.95);
     backdrop-filter: blur(8px);
-    z-index: 100;
+    z-index: 200;
   }
   .nav-logo {
     display: flex;
@@ -73,18 +133,109 @@ const currentPath = Astro.url.pathname;
   }
   .nav-links a:hover, .nav-links a.active { color: #9d8cd4; }
 
-  @media (max-width: 800px) {
-    nav {
-      padding: 12px 16px;
-    }
-    .nav-links {
-      display: none;
-    }
-    .nav-logo span {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-    }
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 300;
+  }
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #6d5a8a;
+    transition: all 0.25s ease;
+    transform-origin: center;
+  }
+  .hamburger:hover span { background: #c4b5fd; }
+  .hamburger.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
   }
 
+  /* MOBILE MENU */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: #0a0a14;
+    border-left: 1px solid rgba(139,92,246,0.15);
+    z-index: 150;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+  }
+  .mobile-menu.open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+  .mobile-menu-inner {
+    padding: 80px 32px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+  }
+  .mobile-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(139,92,246,0.06);
+    text-decoration: none;
+    color: #7c6a99;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    transition: color 0.15s;
+  }
+  .mobile-link:hover, .mobile-link.active { color: #c4b5fd; }
+  .mobile-link-num {
+    font-size: 10px;
+    color: #3d2f5c;
+    letter-spacing: 0.2em;
+    min-width: 24px;
+  }
+  .mobile-link.active .mobile-link-num { color: #7c3aed; }
 
+  .mobile-footer-links {
+    margin-top: auto;
+    padding-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .mobile-footer-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: #3d2f5c;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .mobile-footer-links a:hover { color: #6d5a8a; }
+
+  @media (max-width: 800px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
 </style>
