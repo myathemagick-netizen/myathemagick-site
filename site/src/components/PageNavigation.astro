@@ -1,0 +1,18 @@
+---
+const { title } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '');
+const atlas = path.startsWith('/system/atlas');
+const game = path.startsWith('/game');
+const element = path.startsWith('/system/') && !atlas;
+const parent = atlas ? {href:'/system/atlas',label:'Atlas'} : game ? {href:'/game',label:'Mycelium'} : element ? {href:'/system',label:'The System'} : null;
+---
+<nav class="page-trail" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>{parent && path !== parent.href && <><a href={parent.href}>{parent.label}</a><span aria-hidden="true">/</span></>}<span aria-current="page">{title}</span></nav>
+<nav class="section-jumps" aria-label="On this page" hidden><span>On this page</span></nav>
+<script>
+const jumps=document.querySelector('.section-jumps');
+const labels=Array.from(document.querySelectorAll('main.inner-page .section-label, main.inner-page .vol-title, main.inner-page .tool-center h2'));
+if(jumps && !document.querySelector('.atlas-shell, .manual-shell')) {
+ labels.forEach((label,i)=> {const section=label.closest('section') || label.parentElement; if(!section)return; if(!section.id)section.id='page-section-'+i; const a=document.createElement('a');a.href='#'+section.id;a.textContent=label.textContent;jumps.append(a);});
+ if(labels.length)jumps.removeAttribute('hidden');
+}
+</script>

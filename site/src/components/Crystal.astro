@@ -1,0 +1,17 @@
+---
+const { icon, color, size = 110 } = Astro.props;
+---
+<svg class="crystal" viewBox="0 0 110 150" width={size} height={size * 150 / 110} aria-hidden="true" focusable="false" style={`--crystal-color: ${color}`}>
+  <polygon points="55,3 87,35 94,100 55,147 16,100 23,35" fill={color} opacity=".7" />
+  <polygon points="55,3 55,42 23,35" fill="white" opacity=".4" />
+  <polygon points="55,3 87,35 55,42" fill="white" opacity=".15" />
+  <polygon points="23,35 55,42 35,104 16,100" fill="white" opacity=".13" />
+  <polygon points="87,35 94,100 75,104 55,42" fill="black" opacity=".23" />
+  <polygon points="55,42 75,104 55,125 35,104" fill={color} opacity=".9" />
+  <polygon points="16,100 35,104 55,147" fill="black" opacity=".28" />
+  <polygon points="94,100 55,147 75,104" fill="white" opacity=".25" />
+  <polygon points="35,104 55,125 55,147" fill="white" opacity=".18" />
+  <g stroke="white" stroke-opacity=".55" stroke-width=".8" fill="none"><polygon points="55,3 87,35 94,100 55,147 16,100 23,35"/><path d="M55 3V42L35 104 55 147 75 104 55 42 23 35M55 42L87 35M16 100L35 104 55 125 75 104 94 100"/></g>
+  <text x="55" y="81" text-anchor="middle" dominant-baseline="middle" fill="#fff8ed" font-size="35" font-family="Arial, sans-serif">{icon}</text>
+</svg>
+<style>.crystal { display:block; max-width:100%; height:auto; filter:drop-shadow(0 0 12px color-mix(in srgb,var(--crystal-color) 28%,transparent)); }</style>

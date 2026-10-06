@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Footer from '../../components/Footer.astro';
+import Crystal from '../../components/Crystal.astro';
 
 const elements = {
   chaos: {
@@ -170,7 +171,7 @@ if (!data) {
 
   <div class="page-header" style={`border-left: 4px solid ${data.color};`}>
     <div class="eyebrow" style={`color: ${data.color}; opacity: 0.7`}>Crystal Path · Element {data.num}</div>
-    <div class="element-icon" style={`color: ${data.color}; filter: drop-shadow(0 0 16px ${data.glowColor})`}>{data.icon}</div>
+    <div class="element-icon" style={`color: ${data.color}; filter: drop-shadow(0 0 16px ${data.glowColor})`}><Crystal icon={data.icon} color={data.color} size={100} /></div>
     <h1 style={`color: ${data.color}; text-shadow: 0 0 40px ${data.glowColor}, 0 0 80px ${data.glowColor}`}>{data.name}</h1>
     <div class="keyword" style={`color: ${data.color}; opacity: 0.6`}>{data.keyword} · {data.chakra}</div>
     <p class="tagline">{data.tagline}</p>
@@ -225,7 +226,7 @@ if (!data) {
         <a href={`/system/${key}`}
            class={`element-nav-item ${key === element ? 'active' : ''}`}
            style={key === element ? `border-color: ${el.color}; background: ${el.color}11` : ''}>
-          <span class="nav-icon" style={key === element ? `color: ${el.color}` : ''}>{el.icon}</span>
+          <span class="nav-icon"><Crystal icon={el.icon} color={el.color} size={32} /></span>
           <span class="nav-name" style={key === element ? `color: ${el.color}` : ''}>{el.name}</span>
           <span class="nav-num" style={key === element ? `color: ${el.color}; opacity: 0.6` : ''}>{el.num}</span>
         </a>
@@ -373,12 +374,12 @@ if (!data) {
     font-family: 'Cinzel', serif;
     font-size: 10px;
     letter-spacing: 0.2em;
-    color: #6d5a8a;
+    color: var(--muted);
     text-decoration: none;
     transition: color 0.15s;
     margin-top: auto;
   }
-  .back-link:hover { color: #c4b5fd; }
+  .back-link:hover { color: var(--lavender); }
 
   /* ELEMENT NAV */
   .element-nav {
@@ -388,7 +389,7 @@ if (!data) {
   .section-label {
     font-size: 10px;
     letter-spacing: 0.5em;
-    color: #6d5a8a;
+    color: var(--muted);
     margin-bottom: 24px;
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
@@ -411,7 +412,7 @@ if (!data) {
     transition: background 0.15s;
   }
   .element-nav-item:hover { background: rgba(109,40,217,0.06); }
-  .nav-icon { font-size: 14px; color: #4c3d6e; }
+  .nav-icon { font-size: 14px; color: var(--muted); }
   .nav-name {
     font-size: 12px;
     color: #7c6a99;
@@ -420,7 +421,7 @@ if (!data) {
   }
   .nav-num {
     font-size: 10px;
-    color: #4c3d6e;
+    color: var(--muted);
     font-family: 'Cinzel', serif;
   }
 

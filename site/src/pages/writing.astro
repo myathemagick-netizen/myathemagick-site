@@ -34,7 +34,7 @@ const books = allWriting.filter(w => w.data.type === 'book');
           </div>
           <div class="essay-body">
             <div class="essay-date">
-              {essay.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              {essay.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
             </div>
             <div class="essay-title">{essay.data.title}</div>
             <div class="essay-desc">{essay.data.description}</div>
@@ -94,7 +94,7 @@ const books = allWriting.filter(w => w.data.type === 'book');
   .eyebrow {
     font-size: 10px;
     letter-spacing: 0.5em;
-    color: #6d5a8a;
+    color: var(--muted);
     margin-bottom: 16px;
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
@@ -103,13 +103,13 @@ const books = allWriting.filter(w => w.data.type === 'book');
     font-family: 'Cinzel', serif;
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-weight: 400;
-    color: #f0ecff;
+    color: var(--heading);
     margin-bottom: 16px;
     letter-spacing: 0.04em;
   }
   .intro {
     font-size: 16px;
-    color: #a855f7;
+    color: var(--text);
     font-weight: 300;
     line-height: 1.8;
   }
@@ -128,22 +128,22 @@ const books = allWriting.filter(w => w.data.type === 'book');
   .section-label {
     font-size: 10px;
     letter-spacing: 0.5em;
-    color: #6d5a8a;
+    color: var(--muted);
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
   }
   .section-more {
     font-size: 11px;
     letter-spacing: 0.15em;
-    color: #4c3d6e;
+    color: var(--muted);
     font-family: 'Cinzel', serif;
     text-decoration: none;
     transition: color 0.15s;
   }
-  .section-more:hover { color: #9d8cd4; }
+  .section-more:hover { color: var(--lavender); }
   .section-desc {
     font-size: 13px;
-    color: #4c3d6e;
+    color: var(--muted);
     font-weight: 300;
     margin-bottom: 32px;
     letter-spacing: 0.02em;
@@ -184,7 +184,7 @@ const books = allWriting.filter(w => w.data.type === 'book');
     font-family: 'Cinzel', serif;
     font-size: 9px;
     letter-spacing: 0.2em;
-    color: #c4b5fd;
+    color: var(--lavender);
     background: rgba(9,9,15,0.8);
     padding: 4px 8px;
     border: 1px solid rgba(139,92,246,0.3);
@@ -205,14 +205,14 @@ const books = allWriting.filter(w => w.data.type === 'book');
   .essay-date {
     font-size: 10px;
     letter-spacing: 0.15em;
-    color: #4c3d6e;
+    color: var(--muted);
     font-family: 'Cinzel', serif;
     margin-bottom: 10px;
   }
   .essay-title {
     font-family: 'Cinzel', serif;
     font-size: 16px;
-    color: #c4b5fd;
+    color: var(--lavender);
     font-weight: 400;
     line-height: 1.4;
     margin-bottom: 10px;
@@ -222,7 +222,7 @@ const books = allWriting.filter(w => w.data.type === 'book');
   .essay-card:hover .essay-title { color: #e2d9f3; }
   .essay-desc {
     font-size: 13px;
-    color: #a855f7;
+    color: var(--text);
     line-height: 1.7;
     font-weight: 300;
     margin-bottom: 16px;
@@ -230,11 +230,11 @@ const books = allWriting.filter(w => w.data.type === 'book');
   .essay-link {
     font-size: 11px;
     letter-spacing: 0.15em;
-    color: #4c3d6e;
+    color: var(--muted);
     font-family: 'Cinzel', serif;
     transition: color 0.15s;
   }
-  .essay-card:hover .essay-link { color: #9d8cd4; }
+  .essay-card:hover .essay-link { color: var(--lavender); }
 
   /* BOOKS GRID */
   .books-grid {
@@ -284,21 +284,21 @@ const books = allWriting.filter(w => w.data.type === 'book');
   .book-title {
     font-family: 'Cinzel', serif;
     font-size: 18px;
-    color: #c4b5fd;
+    color: var(--lavender);
     font-weight: 400;
     line-height: 1.4;
     letter-spacing: 0.03em;
   }
   .book-desc {
     font-size: 14px;
-    color: #a855f7;
+    color: var(--text);
     line-height: 1.7;
     font-weight: 300;
   }
   .book-link {
     font-size: 11px;
     letter-spacing: 0.15em;
-    color: #4c3d6e;
+    color: var(--muted);
     font-family: 'Cinzel', serif;
     transition: color 0.15s;
     margin-top: 8px;
@@ -322,20 +322,20 @@ const books = allWriting.filter(w => w.data.type === 'book');
   .subscribe-eyebrow {
     font-size: 10px;
     letter-spacing: 0.5em;
-    color: #6d5a8a;
+    color: var(--muted);
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
   }
   .subscribe-title {
     font-family: 'Cinzel', serif;
     font-size: 22px;
-    color: #f0ecff;
+    color: var(--heading);
     font-weight: 400;
     letter-spacing: 0.04em;
   }
   .subscribe-desc {
     font-size: 15px;
-    color: #a855f7;
+    color: var(--text);
     line-height: 1.8;
     font-weight: 300;
   }
@@ -343,7 +343,7 @@ const books = allWriting.filter(w => w.data.type === 'book');
     font-family: 'Cinzel', serif;
     font-size: 11px;
     letter-spacing: 0.25em;
-    color: #c4b5fd;
+    color: var(--lavender);
     border: 1px solid rgba(167,139,250,0.35);
     padding: 12px 28px;
     background: rgba(109,40,217,0.14);

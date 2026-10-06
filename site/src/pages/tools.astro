@@ -1,8 +1,23 @@
-﻿---
+---
 import Layout from '../layouts/Layout.astro';
+const ritesPreview = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/tool-virtual-rites.png';
+const audioPreview = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/tool-audio-shear-zone.png';
+const globePreview = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/tool-rivvit.png';
+const levogyrePreview = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/tool-levogyre.png';
+const previews = { 'virtual-rites': ritesPreview, 'audio-shear-zone': audioPreview, rivvit: globePreview, levogyre: levogyrePreview };
 import Footer from '../components/Footer.astro';
 
 const tools = [
+  {
+    id: "virtual-rites",
+    icon: "✧",
+    name: "Virtual Rites",
+    tag: "Ritual spaces · Intent · VR",
+    desc: "Ritual spaces you can step into in a web browser or VR headset. Choose a rite and a place, set an intent, and follow voice guidance or move at your own pace. Includes sigil charging, a daily tarot draw, and a journal stored on your device.",
+    url: "https://myathemagick-netizen.github.io/virtual-rites/",
+    label: "Open Virtual Rites",
+    status: "live",
+  },
   {
     id: "audio-shear-zone",
     icon: "◉",
@@ -55,22 +70,14 @@ const tools = [
   </div>
 
   <div class="tools-list">
-    {tools.map(tool => (
+    {tools.filter(tool => tool.status !== 'experimental').map(tool => (
       <div class="tool-row" id={tool.id}>
-        <div class="tool-left">
-          <div class="tool-icon">{tool.icon}</div>
-          <div class="tool-tag">{tool.tag}</div>
-          {tool.status === "experimental" && (
-            <div class="tool-badge">Experimental</div>
-          )}
+        <div class="tool-copy">
+          <div class="tool-left"><div class="tool-icon">{tool.icon}</div><div class="tool-tag">{tool.tag}</div></div>
+          <div class="tool-center"><h2>{tool.name}</h2><p>{tool.desc}</p></div>
+          <div class="tool-right"><a href={tool.url} target="_blank" rel="noopener noreferrer" class="tool-btn">{tool.label} ↗</a></div>
         </div>
-        <div class="tool-center">
-          <h2>{tool.name}</h2>
-          <p>{tool.desc}</p>
-        </div>
-        <div class="tool-right">
-          <a href={tool.url} target="_blank" class="tool-btn">{tool.label} ↗</a>
-        </div>
+        {previews[tool.id] && <div class="tool-preview-box"><img class="tool-preview" src={previews[tool.id]} alt={tool.name + ' interface preview'} width={900} loading="lazy" /><span>Interface preview</span></div>}
       </div>
     ))}
   </div>
@@ -78,6 +85,7 @@ const tools = [
 <div class="coming-soon">
     <div class="eyebrow">In development</div>
     <div class="cs-grid">
+      {tools.filter(tool => tool.status === "experimental").map(tool => <div class="cs-card" id={tool.id}><div class="cs-icon">{tool.icon}</div><div class="cs-name">{tool.name}</div><div class="tool-badge">Experimental · In development</div><p class="cs-desc">{tool.desc}</p></div>)}
       <div class="cs-card">
         <div class="cs-icon">⟡</div>
         <div class="cs-name">Novelty Window</div>
@@ -106,7 +114,7 @@ const tools = [
   .eyebrow {
     font-size: 10px;
     letter-spacing: 0.5em;
-    color: #4c3d6e;
+    color: var(--muted);
     margin-bottom: 16px;
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
@@ -115,13 +123,13 @@ const tools = [
     font-family: 'Cinzel', serif;
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-weight: 400;
-    color: #f0ecff;
+    color: var(--heading);
     margin-bottom: 16px;
     letter-spacing: 0.04em;
   }
   .intro {
     font-size: 16px;
-    color: #a855f7;
+    color: var(--text);
     font-weight: 300;
     line-height: 1.8;
   }
@@ -148,12 +156,12 @@ const tools = [
   }
   .tool-icon {
     font-size: 28px;
-    color: #4c3d6e;
+    color: var(--muted);
   }
   .tool-tag {
     font-size: 10px;
     letter-spacing: 0.15em;
-    color: #3d2f5c;
+    color: var(--muted);
     font-family: 'Cinzel', serif;
     line-height: 1.6;
   }
@@ -171,13 +179,13 @@ const tools = [
     font-family: 'Cinzel', serif;
     font-size: 20px;
     font-weight: 400;
-    color: #c4b5fd;
+    color: var(--lavender);
     margin-bottom: 12px;
     letter-spacing: 0.04em;
   }
   .tool-center p {
     font-size: 15px;
-    color: #a855f7;
+    color: var(--text);
     line-height: 1.8;
     font-weight: 300;
   }
@@ -190,7 +198,7 @@ const tools = [
     font-family: 'Cinzel', serif;
     font-size: 11px;
     letter-spacing: 0.2em;
-    color: #c4b5fd;
+    color: var(--lavender);
     border: 1px solid rgba(167,139,250,0.3);
     padding: 12px 20px;
     background: rgba(109,40,217,0.1);
@@ -221,7 +229,7 @@ const tools = [
   .cs-name {
     font-family: 'Cinzel', serif;
     font-size: 14px;
-    color: #3d2f5c;
+    color: var(--muted);
     margin-bottom: 8px;
     letter-spacing: 0.05em;
   }

@@ -24,7 +24,7 @@ const grouped = bookOrder.map(label => ({
 
   {grouped.map(({ label, entries }) => (
     <section class="book-section">
-      <div class="section-label">{label}</div>
+      <h2 class="section-label atlas-book-heading">{label}</h2>
       <div class="entry-list">
         {entries.map(entry => {
           const isSubfile = entry.id.includes('/');
@@ -59,7 +59,7 @@ const grouped = bookOrder.map(label => ({
   .eyebrow {
     font-size: 10px;
     letter-spacing: 0.5em;
-    color: #4c3d6e;
+    color: var(--muted);
     margin-bottom: 16px;
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
@@ -68,13 +68,13 @@ const grouped = bookOrder.map(label => ({
     font-family: 'Cinzel', serif;
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-weight: 400;
-    color: #f0ecff;
+    color: var(--heading);
     margin-bottom: 20px;
     letter-spacing: 0.04em;
   }
   .intro {
     font-size: 16px;
-    color: #a855f7;
+    color: var(--text);
     font-weight: 300;
     line-height: 1.9;
     max-width: 680px;
@@ -82,7 +82,7 @@ const grouped = bookOrder.map(label => ({
   .intro.sub {
     font-size: 13px;
     margin-top: 12px;
-    color: #3d2f5c;
+    color: var(--muted);
   }
 
   .book-section {
@@ -94,7 +94,7 @@ const grouped = bookOrder.map(label => ({
   .section-label {
     font-size: 10px;
     letter-spacing: 0.5em;
-    color: #4c3d6e;
+    color: var(--muted);
     margin-bottom: 20px;
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
@@ -127,7 +127,7 @@ const grouped = bookOrder.map(label => ({
   .entry-title {
     font-family: 'Cinzel', serif;
     font-size: 13px;
-    color: #c4b5fd;
+    color: var(--lavender);
     letter-spacing: 0.04em;
     white-space: nowrap;
     flex-shrink: 0;
@@ -137,7 +137,7 @@ const grouped = bookOrder.map(label => ({
 
   .entry-desc {
     font-size: 12px;
-    color: #4c3d6e;
+    color: var(--muted);
     line-height: 1.6;
     font-weight: 300;
     flex: 1;
@@ -146,13 +146,13 @@ const grouped = bookOrder.map(label => ({
   .entry-link {
     font-size: 11px;
     letter-spacing: 0.15em;
-    color: #3d2f5c;
+    color: var(--muted);
     font-family: 'Cinzel', serif;
     white-space: nowrap;
     flex-shrink: 0;
     transition: color 0.15s;
   }
-  .entry-card:hover .entry-link { color: #9d8cd4; }
+  .entry-card:hover .entry-link { color: var(--lavender); }
 
   .footer-nav {
     padding: 40px 40px 48px;
@@ -161,11 +161,11 @@ const grouped = bookOrder.map(label => ({
     font-family: 'Cinzel', serif;
     font-size: 11px;
     letter-spacing: 0.2em;
-    color: #4c3d6e;
+    color: var(--muted);
     text-decoration: none;
     transition: color 0.15s;
   }
-  .back-link:hover { color: #9d8cd4; }
+  .back-link:hover { color: var(--lavender); }
 
   @media (max-width: 800px) {
     .page-header { padding: 40px 24px 32px; }

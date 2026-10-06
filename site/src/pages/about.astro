@@ -1,5 +1,16 @@
-﻿---
+---
 import Layout from '../layouts/Layout.astro';
+import IllustratedStats from '../components/IllustratedStats.astro';
+import LineageMotif from '../components/LineageMotif.astro';
+import PlatformIcon from '../components/PlatformIcon.astro';
+const atlasArt = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/atlas-connections-hero.png';
+const audioArt = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/tool-audio-shear-zone.png';
+const globeArt = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/tool-rivvit.png';
+const ritesArt = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/tool-virtual-rites.png';
+const gameArt = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/mycelium-concept-interior.webp';
+const levogyreArt = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/tool-levogyre.png';
+const projectArt = { 'myathemagick.com':atlasArt, 'Audio Shear Zone':audioArt, RiVViT:globeArt, 'Virtual Rites':ritesArt, Mycelium:gameArt, Levogyre:levogyreArt, 'The Crystal Path Course':atlasArt };
+const lineageImages = { 'Alfred Jarry': {url:'https://upload.wikimedia.org/wikipedia/commons/d/d3/Alfred_Jarry.jpg',source:'https://commons.wikimedia.org/wiki/File:Alfred_Jarry.jpg',credit:'Atelier Nadar, 1896 · Public domain'}, 'Nicholas Roerich': {url:'https://upload.wikimedia.org/wikipedia/commons/c/ce/Nicholas_Roerich_005.jpg',source:'https://commons.wikimedia.org/wiki/File:Nicholas_Roerich_005.jpg',credit:'Nicholas Roerich, Red Horses, 1925 · Public domain'} };
 import Footer from '../components/Footer.astro';
 
 const lineage = [
@@ -122,6 +133,9 @@ const lineage = [
 const categories = [...new Set(lineage.map(l => l.category))];
 
 const projects = [
+  { name: "Mycelium", desc: "A voxel survival game of ruins, discovery, and fungal regrowth. In development.", url: "/game" },
+  { name: "Virtual Rites", desc: "Browser and VR ritual spaces, sigil charging, and guided practice.", url: "https://myathemagick-netizen.github.io/virtual-rites/" },
+  { name: "Levogyre", desc: "Explore counter-rotation through an interactive gyroscope visualization.", url: "https://myathemagick-netizen.github.io/levogyre/" },
   { name: "myathemagick.com", desc: "This site — the canonical home of the System.", url: "/" },
   { name: "Audio Shear Zone", desc: "Binaural attunement engine with Live Earth Sync.", url: "https://myathemagick-netizen.github.io/audio-shear-zone/" },
   { name: "RiVViT", desc: "Interactive VR globe mapping the icosahedral riftline network.", url: "https://myathemagick-netizen.github.io/RiVViT/" },
@@ -132,6 +146,7 @@ const projects = [
 ---
 
 <Layout title="About">
+<div class="about-page">
 
   <!-- ORIGIN -->
   <div class="page-header">
@@ -141,8 +156,8 @@ const projects = [
 
   <section class="origin-section">
     <div class="origin-grid">
-      <div class="origin-main">
-        <div class="section-label">Origin</div>
+      <div class="origin-main about-illustrated"><img class="about-background" src={atlasArt} alt="" width={1000} loading="lazy" />
+        <h2 class="section-label about-section-heading">Origin</h2>
         <div class="origin-text">
           <p>The Myathe Magick System began as a sketch — a grid of hexagons with elemental associations drawn from Final Fantasy's crystal system. That was thirty years ago. The hexagons are still there, now carrying the weight of sacred geometry, torsion field physics, chaos magick theory, Jungian psychology, Mayan cosmology, and the structure of time itself.</p>
           <p>The Crystal Path developed independently, without knowledge of the chakra systems it would later be mapped against, without knowledge of the riftline geography it would later describe. It arrived as a diagram and spent thirty years becoming a system.</p>
@@ -150,30 +165,13 @@ const projects = [
           <p>In 2007, an early Crystal Path diagram was shown to Alex Grey. His response: "Do something with this idea." The system has been doing something with it ever since.</p>
         </div>
       </div>
-      <div class="origin-sidebar">
-        <div class="origin-stat">
-          <div class="stat-num">30</div>
-          <div class="stat-label">Years in development</div>
-        </div>
-        <div class="origin-stat">
-          <div class="stat-num">7</div>
-          <div class="stat-label">Crystal Path elements</div>
-        </div>
-        <div class="origin-stat">
-          <div class="stat-num">20</div>
-          <div class="stat-label">Icosahedral riftlines</div>
-        </div>
-        <div class="origin-stat">
-          <div class="stat-num">∞</div>
-          <div class="stat-label">Dragons at the edge</div>
-        </div>
-      </div>
+      <div class="origin-sidebar"><IllustratedStats /></div>
     </div>
   </section>
 
   <!-- THE WORK -->
-  <section class="work-section">
-    <div class="section-label">The work</div>
+  <section class="work-section about-illustrated"><img class="about-background" src={levogyreArt} alt="" width={1000} loading="lazy" />
+    <h2 class="section-label about-section-heading">The work</h2>
     <div class="work-text">
       <p>Peter Carroll edged chaos magick toward mathematics and quantum probability. Genesis P-Orridge took it into the body and television. The Myathe Magick System takes it further — into VR, AI, torsion field physics, and the pataphysical edges of what can be formally known.</p>
       <p>The System is not a replacement for existing magical traditions. It is an extension of the chaos magick project: the insistence that any model is valid if it works, that the edges of experience are more interesting than the center, that the practitioner is the laboratory. What changes is the toolkit — AI as sigilization engine, VR as ritual space, real-time planetary data as magical feedback, the hypersigil as ARG.</p>
@@ -183,19 +181,21 @@ const projects = [
 
   <!-- LINEAGE -->
   <section class="lineage-section">
-    <div class="section-label">Lineage</div>
-    <p class="section-desc">The intellectual ancestors of the System — where the ideas came from and how they connect. This list is incomplete and always growing.</p>
+    <div class="about-illustrated section-banner"><img class="about-background" src={atlasArt} alt="" width={1000} loading="lazy" /><h2 class="section-label about-section-heading">Lineage</h2>
+    <p class="section-desc">The intellectual ancestors of the System — where the ideas came from and how they connect. This list is incomplete and always growing.</p></div>
 
     {categories.map(cat => (
       <div class="lineage-category">
         <div class="cat-label">{cat}</div>
         <div class="lineage-grid">
-          {lineage.filter(l => l.category === cat).map(person => (
-            <a href={person.url} target="_blank" class="person-card">
+          {lineage.filter(l => l.category === cat).map((person,i) => (
+            <div class="lineage-entry"><a href={person.url} target="_blank" rel="noopener noreferrer" class="person-card about-illustrated">
+              <LineageMotif name={person.name} index={i} />
+              {lineageImages[person.name] && <img class="about-background lineage-photo" src={lineageImages[person.name].url} alt="" loading="lazy" />}
               <div class="person-name">{person.name}</div>
               <div class="person-desc">{person.desc}</div>
               <div class="person-link">↗ Learn more</div>
-            </a>
+            </a>{lineageImages[person.name] && <a class="lineage-credit" href={lineageImages[person.name].source} target="_blank" rel="noopener noreferrer">{lineageImages[person.name].credit} ↗</a>}</div>
           ))}
         </div>
       </div>
@@ -204,10 +204,11 @@ const projects = [
 
   <!-- CURRENT PROJECTS -->
   <section class="projects-section">
-    <div class="section-label">Current projects</div>
+    <div class="about-illustrated section-banner"><img class="about-background" src={gameArt} alt="" width={1000} loading="lazy" /><h2 class="section-label about-section-heading">Current projects</h2></div>
     <div class="projects-grid">
       {projects.map(p => (
-        <a href={p.url} class="project-card" target={p.url.startsWith('http') ? '_blank' : '_self'}>
+        <a href={p.url} class="project-card about-illustrated" target={p.url.startsWith('http') ? '_blank' : '_self'}>
+          {projectArt[p.name] ? <img class="about-background" src={projectArt[p.name]} alt="" width={650} loading="lazy" /> : <LineageMotif name={p.name === 'Hacking Reality' ? 'William S. Burroughs' : 'Genesis P-Orridge'} />}
           <div class="project-name">{p.name}</div>
           <div class="project-desc">{p.desc}</div>
           <div class="project-link">↗</div>
@@ -218,37 +219,39 @@ const projects = [
 
   <!-- CONNECT -->
   <section class="connect-section">
-    <div class="section-label">Connect</div>
-    <p class="section-desc">Follow the work across platforms. New essays on Substack, videos on YouTube, tools on GitHub.</p>
+    <div class="about-illustrated section-banner"><img class="about-background" src={ritesArt} alt="" width={1000} loading="lazy" /><h2 class="section-label about-section-heading">Connect</h2>
+    <p class="section-desc">Follow the work across platforms. New essays on Substack, videos on YouTube, tools on GitHub.</p></div>
     <div class="connect-grid">
+      <a href="https://github.com/myathemagick-netizen" target="_blank" rel="noopener noreferrer" class="connect-card"><PlatformIcon name="GitHub" /><div class="connect-name">GitHub</div><div class="connect-desc">Source code, tools, and projects from Myathe Magick</div><div class="connect-link">↗ Explore repositories</div></a>
       <a href="https://youtube.com/channel/UClWbNxQMrx-XB3h8xXh_oxQ/" target="_blank" class="connect-card">
-        <div class="connect-name">YouTube</div>
+        <PlatformIcon name="YouTube" /><div class="connect-name">YouTube</div>
         <div class="connect-desc">Essay videos, music, and Nyx Nightshade transmissions</div>
         <div class="connect-link">↗ Subscribe</div>
       </a>
       <a href="https://myathemagick.substack.com/" target="_blank" class="connect-card">
-        <div class="connect-name">Substack</div>
+        <PlatformIcon name="Substack" /><div class="connect-name">Substack</div>
         <div class="connect-desc">Essays and expanded investigations — delivered to your inbox</div>
         <div class="connect-link">↗ Subscribe</div>
       </a>
       <a href="https://ko-fi.com/myathemagick" target="_blank" class="connect-card">
-        <div class="connect-name">Ko-fi</div>
+        <PlatformIcon name="Ko-fi" /><div class="connect-name">Ko-fi</div>
         <div class="connect-desc">Support the work · closer access · draft drops and BTS</div>
         <div class="connect-link">↗ Support</div>
       </a>
       <a href="https://www.facebook.com/profile.php?id=61563102456940" target="_blank" class="connect-card">
-        <div class="connect-name">Facebook</div>
+        <PlatformIcon name="Facebook" /><div class="connect-name">Facebook</div>
         <div class="connect-desc">Daily posts, memes, community discussion</div>
         <div class="connect-link">↗ Follow</div>
       </a>
       <a href="https://x.com/MyatheMagick" target="_blank" class="connect-card">
-        <div class="connect-name">X / Twitter</div>
+        <PlatformIcon name="X / Twitter" /><div class="connect-name">X / Twitter</div>
         <div class="connect-desc">Short transmissions, threads, connective tissue posts</div>
         <div class="connect-link">↗ Follow</div>
       </a>
     </div>
   </section>
 
+</div>
   <Footer />
 
 </Layout>

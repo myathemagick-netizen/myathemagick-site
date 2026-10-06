@@ -1,0 +1,13 @@
+---
+const atlasArt = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/atlas-connections-hero.png';
+const globe = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/tool-rivvit.png';
+const sound = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/tool-audio-shear-zone.png';
+const gyroscope = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/tool-levogyre.png';
+const { book, id } = Astro.props;
+const source = book === 'Book Two' ? globe : book === 'Book Four' ? sound : book === 'Book Six' ? gyroscope : atlasArt;
+const position = book === 'Book Three' ? '80% 45%' : book === 'Book Five' ? '55% 90%' : '70% 50%';
+---
+<div class="atlas-backdrop" aria-hidden="true"><img src={source} alt="" width={1000} style={`object-position: ${position}`} />
+{book === 'Book Three' && <svg viewBox="0 0 600 300"><path d="M40 230C120 50 210 320 290 130S460 30 560 170" fill="none" stroke="#d5b2ff" stroke-width="5" /></svg>}
+{book === 'Book Five' && <svg viewBox="0 0 600 300"><g fill="none" stroke="#ffcf8f" stroke-width="2"><path d="M130 250L240 65L350 250ZM240 65L280 250M350 250L420 130L490 250Z"/><path d="M100 265H520M115 275H505"/></g></svg>}
+</div>

@@ -61,7 +61,7 @@ import Layout from '../layouts/Layout.astro';
     font-family: 'Cinzel', serif;
     font-size: 10px;
     letter-spacing: 0.5em;
-    color: #4c3d6e;
+    color: var(--muted);
     text-transform: uppercase;
     margin-bottom: 24px;
   }
@@ -69,14 +69,14 @@ import Layout from '../layouts/Layout.astro';
     font-family: 'Cinzel', serif;
     font-size: clamp(1.1rem, 2.5vw, 1.6rem);
     font-weight: 400;
-    color: #c4b5fd;
+    color: var(--lavender);
     line-height: 1.5;
     margin-bottom: 16px;
     letter-spacing: 0.04em;
   }
   p {
     font-size: 15px;
-    color: #4c3d6e;
+    color: var(--muted);
     font-weight: 300;
     max-width: 400px;
     line-height: 1.8;
@@ -87,7 +87,7 @@ import Layout from '../layouts/Layout.astro';
     font-family: 'Cinzel', serif;
     font-size: 11px;
     letter-spacing: 0.25em;
-    color: #c4b5fd;
+    color: var(--lavender);
     border: 1px solid rgba(167,139,250,0.35);
     padding: 10px 24px;
     background: rgba(109,40,217,0.14);
@@ -99,11 +99,11 @@ import Layout from '../layouts/Layout.astro';
     font-family: 'Cinzel', serif;
     font-size: 11px;
     letter-spacing: 0.25em;
-    color: #4c3d6e;
+    color: var(--muted);
     text-decoration: none;
     transition: color 0.2s;
   }
-  .btn-ghost:hover { color: #9d8cd4; }
+  .btn-ghost:hover { color: var(--lavender); }
   .geo {
     position: absolute;
     bottom: 40px;

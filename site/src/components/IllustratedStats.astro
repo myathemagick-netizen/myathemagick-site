@@ -1,0 +1,47 @@
+---
+import Crystal from './Crystal.astro';
+import { crystalPath } from '../data/crystal-path';
+const atlasHero = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/atlas-connections-hero.png';
+const rivvitPreview = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/tool-rivvit.png';
+---
+<div class="illustrated-stats" aria-label="Myathe Magick in numbers">
+    <div class="stat stat-time">
+      <svg class="stat-line-art" viewBox="0 0 300 200" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor"><circle cx="190" cy="92" r="76"/><circle cx="190" cy="92" r="62"/><circle cx="190" cy="92" r="46"/><circle cx="190" cy="92" r="23"/><path d="M190 8V22M190 162V176M106 92H120M260 92H274M190 92L230 53M190 92L169 70M116 148L265 36"/><ellipse cx="190" cy="92" rx="90" ry="32" transform="rotate(-35 190 92)"/></g></svg>
+      <div class="stat-copy"><div class="stat-num">30</div><div class="stat-label">Years of system-building</div></div>
+    </div>
+
+    <div class="stat stat-crystals">
+      <div class="stat-crystal-art" aria-hidden="true">{crystalPath.map((element,i) => <span style={`--crystal-position: ${i - 3}`}><Crystal icon={element.icon} color={element.color} size={54} /></span>)}</div>
+      <div class="stat-copy"><div class="stat-num">7</div><div class="stat-label">Crystal Path elements</div></div>
+    </div>
+
+    <div class="stat stat-network">
+      <img class="stat-backdrop" src={rivvitPreview} alt="" width={600} loading="lazy" />
+      <div class="stat-copy"><div class="stat-num">20</div><div class="stat-label">Icosahedral riftlines</div></div>
+    </div>
+
+    <div class="stat stat-edge">
+      <img class="stat-backdrop" src={atlasHero} alt="" width={600} loading="lazy" />
+      <svg class="stat-line-art infinity-art" viewBox="0 0 300 200" aria-hidden="true" focusable="false"><path d="M150 100C105 30 42 35 42 100S105 170 150 100 258 30 258 100 195 170 150 100Z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <div class="stat-copy"><div class="stat-num">∞</div><div class="stat-label">Dragons at the edge</div></div>
+    </div>
+</div>
+<style>
+.illustrated-stats { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px; }
+.stat { position:relative; isolation:isolate; overflow:hidden; min-height:210px; border:1px solid var(--line); border-radius:7px; background:var(--panel); display:flex; align-items:flex-end; }
+.stat::after { content:''; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,#140c1926,#140c1980 40%,#140c19f5 85%); }
+.stat-copy { width:100%; position:relative; padding:24px; text-align:left; }
+.stat-num { color:var(--heading); font:700 48px/1.1 var(--display); text-shadow:0 2px 12px #140c19; }
+.stat-label { color:var(--text); font:14px/1.5 var(--sans); margin-top:8px; }
+.stat :global(.stat-backdrop) { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; opacity:.8; }
+.stat-network :global(.stat-backdrop) { object-position:center; transform:scale(1.3); }
+.stat-edge :global(.stat-backdrop) { object-position:80% center; opacity:.55; }
+.stat-line-art { position:absolute; inset:0; width:100%; height:100%; color:var(--mint); z-index:-2; opacity:.6; }
+.infinity-art { color:var(--lavender); opacity:.8; }
+.stat-time { background:radial-gradient(ellipse at 75% 25%,#80514466,transparent 75%),var(--panel); }
+.stat-crystal-art { position:absolute; inset:0; z-index:-2; display:flex; justify-content:center; align-items:flex-start; gap:0; padding-top:25px; }
+.stat-crystal-art span { width:32px; flex-shrink:0; transform:translateY(calc(var(--crystal-position) * var(--crystal-position) * 3px)) rotate(calc(var(--crystal-position) * 7deg)); }
+.stat-crystal-art :global(svg) { width:54px; max-width:none; }
+
+@media(max-width:450px) { .stat { min-height:190px; }.stat-copy { padding:18px; }.stat-num { font-size:42px; } }
+</style>

@@ -1,5 +1,8 @@
 ---
+import PageNavigation from '../components/PageNavigation.astro';
+import '../styles/interior.css';
 import Nav from '../components/Nav.astro';
+import '../styles/theme.css';
 const { title = "Home", description = "A living system at the intersection of sacred geometry, chaos magick, torsion field physics, and the structure of time itself." } = Astro.props;
 ---
 <!doctype html>
@@ -15,8 +18,12 @@ const { title = "Home", description = "A living system at the intersection of sa
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <Nav />
+    <main id="main-content" class:list={{'inner-page': Astro.url.pathname !== '/'}}>
+    {Astro.url.pathname !== '/' && <PageNavigation title={title} />}
     <slot />
+    </main>
   </body>
 </html>
 
@@ -24,7 +31,7 @@ const { title = "Home", description = "A living system at the intersection of sa
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
     background: #09090f;
-    color: #c8c0e0;
+    color: var(--text);
     font-family: 'Crimson Pro', Georgia, serif;
     min-height: 100vh;
   }

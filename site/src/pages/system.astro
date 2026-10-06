@@ -1,5 +1,7 @@
 ﻿---
 import Layout from '../layouts/Layout.astro';
+import Crystal from '../components/Crystal.astro';
+import { crystalPath } from '../data/crystal-path';
 import Footer from '../components/Footer.astro';
 
 const elements = [
@@ -155,7 +157,7 @@ const concepts = [
           )}
            <a href={`/system/${el.id}`} class="cp-node" style={`border-left: 3px solid ${el.color}; `}>
             <div class="cp-node-left">
-              <span class="cp-icon" style={`color: ${el.color}`}>{el.icon}</span>
+              <span class="system-crystal"><Crystal icon={el.icon} color={crystalPath.find(c => c.id === el.id)?.color || el.color} size={64} /></span>
               <div class="cp-text">
                 <div class="cp-name" style={`color: ${el.color}`}>{el.name}</div>
                 <div class="cp-sub">{el.chakra} · {el.desc}</div>
@@ -260,7 +262,7 @@ const concepts = [
   .eyebrow {
     font-size: 10px;
     letter-spacing: 0.5em;
-    color: #4c3d6e;
+    color: var(--muted);
     margin-bottom: 16px;
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
@@ -269,13 +271,13 @@ const concepts = [
     font-family: 'Cinzel', serif;
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-weight: 400;
-    color: #f0ecff;
+    color: var(--heading);
     margin-bottom: 20px;
     letter-spacing: 0.04em;
   }
   .intro {
     font-size: 16px;
-    color: #a855f7;
+    color: var(--text);
     font-weight: 300;
     line-height: 1.9;
     max-width: 680px;
@@ -289,14 +291,14 @@ const concepts = [
   .section-label {
     font-size: 10px;
     letter-spacing: 0.5em;
-    color: #4c3d6e;
+    color: var(--muted);
     margin-bottom: 12px;
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
   }
   .section-desc {
     font-size: 14px;
-    color: #3d2f5c;
+    color: var(--muted);
     font-weight: 300;
     line-height: 1.8;
     margin-bottom: 40px;
@@ -337,13 +339,13 @@ const concepts = [
     font-family: 'Cinzel', serif;
     font-size: 10px;
     letter-spacing: 0.25em;
-    color: #6d5a8a;
+    color: var(--muted);
     margin-bottom: 4px;
     text-transform: uppercase;
   }
   .between-desc {
     font-size: 11px;
-    color: #3d2f5c;
+    color: var(--muted);
     line-height: 1.6;
     font-weight: 300;
     font-style: italic;
@@ -364,9 +366,9 @@ const concepts = [
   .cp-node:hover { background: rgba(109,40,217,0.08); }
   .cp-node-left { display: flex; align-items: flex-start; gap: 16px; }
   .cp-icon { font-size: 18px; color: #5a4880; width: 22px; text-align: center; flex-shrink: 0; margin-top: 2px; }
-  .cp-name { font-family: 'Cinzel', serif; font-size: 14px; color: #c4b5fd; letter-spacing: 0.05em; margin-bottom: 4px; }
-  .cp-sub { font-size: 12px; color: #4c3d6e; line-height: 1.5; }
-  .cp-num { font-size: 11px; color: #3d2f5c; letter-spacing: 0.1em; font-family: 'Cinzel', serif; flex-shrink: 0; }
+  .cp-name { font-family: 'Cinzel', serif; font-size: 14px; color: var(--lavender); letter-spacing: 0.05em; margin-bottom: 4px; }
+  .cp-sub { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .cp-num { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; font-family: 'Cinzel', serif; flex-shrink: 0; }
 
   /* KEY CONCEPTS */
   .concepts-section {
@@ -385,32 +387,32 @@ const concepts = [
     transition: background 0.15s;
   }
   .concept-card:hover { background: rgba(109,40,217,0.04); }
-  .concept-icon { font-size: 20px; color: #4c3d6e; margin-bottom: 12px; }
+  .concept-icon { font-size: 20px; color: var(--muted); margin-bottom: 12px; }
   .concept-name {
     font-family: 'Cinzel', serif;
     font-size: 15px;
-    color: #c4b5fd;
+    color: var(--lavender);
     margin-bottom: 6px;
     letter-spacing: 0.04em;
   }
   .concept-short {
     font-size: 11px;
     letter-spacing: 0.15em;
-    color: #4c3d6e;
+    color: var(--muted);
     font-family: 'Cinzel', serif;
     margin-bottom: 14px;
     text-transform: uppercase;
   }
   .concept-desc {
     font-size: 13px;
-    color: #a855f7;
+    color: var(--text);
     line-height: 1.8;
     font-weight: 300;
     margin-bottom: 16px;
   }
   .concept-axiom {
     font-size: 12px;
-    color: #3d2f5c;
+    color: var(--muted);
     font-style: italic;
     font-family: 'Crimson Pro', serif;
     border-top: 1px solid rgba(139,92,246,0.08);
@@ -449,7 +451,7 @@ const concepts = [
   .chain-text:hover { background: rgba(109,40,217,0.04); }
   .chain-arrow {
     font-size: 14px;
-    color: #3d2f5c;
+    color: var(--muted);
     padding: 6px 0;
   }
 
@@ -474,17 +476,17 @@ const concepts = [
     display: block;
   }
   .deeper-card:hover { background: rgba(109,40,217,0.05); }
-  .deeper-icon { font-size: 20px; color: #4c3d6e; margin-bottom: 12px; }
+  .deeper-icon { font-size: 20px; color: var(--muted); margin-bottom: 12px; }
   .deeper-name {
     font-family: 'Cinzel', serif;
     font-size: 14px;
-    color: #c4b5fd;
+    color: var(--lavender);
     margin-bottom: 8px;
     letter-spacing: 0.04em;
   }
-  .deeper-desc { font-size: 13px; color: #a855f7; line-height: 1.7; font-weight: 300; margin-bottom: 16px; }
-  .deeper-link { font-size: 11px; letter-spacing: 0.15em; color: #3d2f5c; font-family: 'Cinzel', serif; }
-  .deeper-card:hover .deeper-link { color: #9d8cd4; }
+  .deeper-desc { font-size: 13px; color: var(--text); line-height: 1.7; font-weight: 300; margin-bottom: 16px; }
+  .deeper-link { font-size: 11px; letter-spacing: 0.15em; color: var(--muted); font-family: 'Cinzel', serif; }
+  .deeper-card:hover .deeper-link { color: var(--lavender); }
 
   @media (max-width: 800px) {
     .page-header { padding: 40px 24px 32px; }

@@ -1,0 +1,17 @@
+---
+const { name, index=0 } = Astro.props;
+const kinds = { 'Austin Osman Spare':'sigil','Peter Carroll':'probability','Genesis P-Orridge':'signal','Grant Morrison':'story','Paul Laffoley':'diagram','Buckminster Fuller':'geometry','José Argüelles':'calendar','Nikolai Kozyrev':'time','Wilhelm Reich':'field','William S. Burroughs':'cutup','Brion Gysin':'sound','Robert Anton Wilson':'tunnels','Alfred Jarry':'spiral','Salvador Dalí':'time','Alex Grey':'body','Terence McKenna':'wave','Carl Jung':'psyche','Carlos Castaneda':'eye','Nicholas Roerich':'mountain' };
+const kind = kinds[name] || 'geometry';
+const color=['#d5b2ff','#a2f1d0','#ffb2a8'][index%3];
+---
+<svg class="lineage-motif" viewBox="0 0 360 240" aria-hidden="true" focusable="false" style={`color:${color}`}>
+<g fill="none" stroke="currentColor" stroke-width="1.8">
+{kind==='sigil' && <><circle cx="230" cy="110" r="76"/><path d="M180 185L265 35L295 170L175 70L285 100M230 20V205M175 190H300"/></>}
+{['probability','geometry','diagram'].includes(kind) && <><path d="M230 25L315 75L315 165L230 215L145 165L145 75ZM230 25L185 100L275 100ZM145 75L185 100L145 165L230 145L315 165L275 100L315 75M185 100L230 145L275 100M145 165L230 215L230 145M185 100L230 215L275 100"/>{kind==='diagram' && <><circle cx="230" cy="120" r="108"/><path d="M100 120H355M230 0V240"/></>}</>}
+{['signal','sound','wave'].includes(kind) && <>{Array.from({length:27},(_,i)=><path d={`M${80+i*10} ${120-Math.abs(Math.sin(i*.65))*70}V${120+Math.abs(Math.sin(i*.65))*70}`}/>)}<circle cx="220" cy="120" r="98"/></>}
+{['time','calendar','psyche'].includes(kind) && <>{[24,48,74,100].map(r=><circle cx="230" cy="120" r={r}/>)}{Array.from({length:kind==='calendar'?20:12},(_,i)=><path d="M230 12V29" transform={`rotate(${i*360/(kind==='calendar'?20:12)} 230 120)`}/>)}<path d="M230 120L270 68M230 120L192 90"/>{kind==='psyche'&&<path d="M155 120H305M230 45V195"/>}</>}
+{['cutup','story'].includes(kind) && <>{Array.from({length:8},(_,i)=><g transform={`translate(${135+(i%2)*20} ${35+i*22}) rotate(${(i%3-1)*8})`}><rect width={135+(i%3)*12} height="16"/><path d="M10 8H110"/></g>)}</>}
+{['tunnels','spiral','field'].includes(kind) && <>{Array.from({length:7},(_,i)=><ellipse cx={215+i*4} cy="120" rx={20+i*14} ry={14+i*12} transform={`rotate(${i*13} 230 120)`}/>)}<path d="M90 195L340 45"/></>}
+{['eye','body'].includes(kind) && <><path d="M110 120Q230 5 350 120Q230 235 110 120Z"/><circle cx="230" cy="120" r="45"/><circle cx="230" cy="120" r="20"/>{kind==='body' && <path d="M230 20V220M180 65H280M170 175H290"/>}</>}
+{kind==='mountain' && <><path d="M70 205L155 65L215 160L270 35L355 205ZM155 65L170 125L145 110M270 35L282 105L250 84"/><circle cx="210" cy="40" r="22"/></>}
+</g></svg>

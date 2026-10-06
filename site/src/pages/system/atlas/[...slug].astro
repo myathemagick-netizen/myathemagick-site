@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import AtlasBackdrop from '../../../components/AtlasBackdrop.astro';
 import Footer from '../../../components/Footer.astro';
 import { getCollection, render } from 'astro:content';
 
@@ -12,23 +13,23 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const entries = (await getCollection('atlas')).sort((a,b) => a.data.order - b.data.order);
+const position = entries.findIndex(e => e.id === entry.id);
+const previous = entries[position - 1];
+const next = entries[position + 1];
 ---
 
 <Layout title={entry.data.title}>
 
-  <div class="page-header">
-    <div class="eyebrow">Atlas · {entry.data.book}</div>
-    <h1>{entry.data.title}</h1>
-    <p class="intro">{entry.data.description}</p>
-  </div>
-
-  <div class="prose-wrap">
-    <Content />
-  </div>
-
-  <div class="footer-nav">
-    <a href="/system/atlas" class="back-link">← Atlas index</a>
+  <div class="atlas-shell">
+    <aside class="atlas-index"><a class="kicker" href="/system/atlas">Atlas index ↗</a><nav aria-label="Atlas chapters">{entries.map(e => <a href={`/system/atlas/${e.id}`} aria-current={e.id === entry.id ? 'page' : undefined} class:list={{selected:e.id === entry.id, nested:e.id.includes('/')}}><small>{e.data.book}</small>{e.data.title}</a>)}</nav></aside>
+    <article class="atlas-article">
+      <header class="page-header atlas-illustrated-header"><AtlasBackdrop book={entry.data.book} id={entry.id} /><div class="eyebrow">System / Atlas / {entry.data.book}</div><h1>{entry.data.title}</h1><p class="intro">{entry.data.description}</p></header>
+      <div class="prose-wrap"><Content /></div>
+      <nav class="chapter-pagination" aria-label="Previous and next chapters">{previous ? <a href={`/system/atlas/${previous.id}`}><small>← Previous</small>{previous.data.title}</a> : <a href="/system/atlas">← Atlas index</a>}{next && <a href={`/system/atlas/${next.id}`}><small>Next →</small>{next.data.title}</a>}</nav>
+    </article>
+    <aside class="atlas-toc"><span class="kicker">In this chapter</span><nav aria-label="In this chapter">{headings.filter(h => h.depth <= 3).map(h => <a href={`#${h.slug}`}>{h.text}</a>)}</nav><a class="design-button" href="https://myathemagick-netizen.github.io/RiVViT/" target="_blank" rel="noopener noreferrer">Open RiVViT ↗</a></aside>
   </div>
 
   <Footer />
@@ -46,7 +47,7 @@ const { Content } = await render(entry);
   .eyebrow {
     font-size: 10px;
     letter-spacing: 0.5em;
-    color: #4c3d6e;
+    color: var(--muted);
     margin-bottom: 16px;
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
@@ -55,14 +56,14 @@ const { Content } = await render(entry);
     font-family: 'Cinzel', serif;
     font-size: clamp(1.4rem, 2.5vw, 2rem);
     font-weight: 400;
-    color: #f0ecff;
+    color: var(--heading);
     margin-bottom: 16px;
     letter-spacing: 0.04em;
     line-height: 1.3;
   }
   .intro {
     font-size: 14px;
-    color: #4c3d6e;
+    color: var(--muted);
     font-weight: 300;
     line-height: 1.8;
     max-width: 640px;
@@ -81,26 +82,26 @@ const { Content } = await render(entry);
   .prose-wrap :global(h4) {
     font-family: 'Cinzel', serif;
     font-weight: 400;
-    color: #c4b5fd;
+    color: var(--lavender);
     letter-spacing: 0.04em;
     line-height: 1.3;
     margin: 2.5em 0 0.8em;
   }
   .prose-wrap :global(h1) { font-size: clamp(1.2rem, 2vw, 1.6rem); color: #e2d9f3; }
   .prose-wrap :global(h2) { font-size: clamp(1rem, 1.8vw, 1.3rem); }
-  .prose-wrap :global(h3) { font-size: 1rem; color: #9d8cd4; }
-  .prose-wrap :global(h4) { font-size: 0.9rem; color: #a855f7; letter-spacing: 0.08em; text-transform: uppercase; }
+  .prose-wrap :global(h3) { font-size: 1rem; color: var(--lavender); }
+  .prose-wrap :global(h4) { font-size: 0.9rem; color: var(--text); letter-spacing: 0.08em; text-transform: uppercase; }
 
   .prose-wrap :global(p) {
     font-size: 15px;
-    color: #a855f7;
+    color: var(--text);
     line-height: 1.9;
     font-weight: 300;
     margin-bottom: 1.4em;
   }
 
-  .prose-wrap :global(strong) { color: #c4b5fd; font-weight: 400; }
-  .prose-wrap :global(em) { color: #9d8cd4; font-style: italic; }
+  .prose-wrap :global(strong) { color: var(--lavender); font-weight: 400; }
+  .prose-wrap :global(em) { color: var(--lavender); font-style: italic; }
 
   .prose-wrap :global(hr) {
     border: none;
@@ -115,7 +116,7 @@ const { Content } = await render(entry);
   }
   .prose-wrap :global(li) {
     font-size: 15px;
-    color: #a855f7;
+    color: var(--text);
     line-height: 1.8;
     font-weight: 300;
     margin-bottom: 0.4em;
@@ -128,7 +129,7 @@ const { Content } = await render(entry);
     background: rgba(109,40,217,0.04);
   }
   .prose-wrap :global(blockquote p) {
-    color: #6d5a8a;
+    color: var(--muted);
     font-style: italic;
     margin-bottom: 0;
   }
@@ -142,15 +143,38 @@ const { Content } = await render(entry);
     font-family: 'Cinzel', serif;
     font-size: 11px;
     letter-spacing: 0.2em;
-    color: #4c3d6e;
+    color: var(--muted);
     text-decoration: none;
     transition: color 0.15s;
   }
-  .back-link:hover { color: #9d8cd4; }
+  .back-link:hover { color: var(--lavender); }
 
   @media (max-width: 800px) {
     .page-header { padding: 40px 24px 32px; }
     .prose-wrap { padding: 32px 24px 40px; }
     .footer-nav { padding: 24px 24px 40px; }
   }
+.atlas-shell { display:grid; grid-template-columns:230px minmax(0,1fr) 210px; gap:26px; padding:28px 3%; }
+.atlas-index,.atlas-toc { position:sticky; top:110px; align-self:start; max-height:calc(100vh - 135px); overflow:auto; border:1px solid var(--line); padding:20px 14px; }
+.atlas-index nav,.atlas-toc nav { display:flex; flex-direction:column; margin:18px 0; }
+.atlas-index a,.atlas-toc nav a { font:15px/1.5 var(--sans); padding:11px 9px; border-bottom:1px solid #765d7e40; }
+.atlas-index small { display:block; color:var(--muted); font:10px/1.5 monospace; text-transform:uppercase; letter-spacing:.08em; }
+.atlas-index a.selected { background:#a2f1d018; color:var(--mint); border-left:3px solid var(--mint); }
+.atlas-index a.nested { padding-left:20px; }
+.atlas-article { min-width:0; }
+.atlas-article .page-header { padding:12px 0 28px; max-width:none; }
+.atlas-article h1 { font:700 clamp(32px,3.5vw,56px)/1.1 var(--display); letter-spacing:-.035em; }
+.atlas-article .prose-wrap { padding:8px 0 35px; max-width:75ch; }
+.prose-wrap :global(p),.prose-wrap :global(li) { color:var(--text); font-size:20px; font-weight:400; line-height:1.85; }
+.prose-wrap :global(h2) { font-size:28px; }
+.prose-wrap :global(h3) { font-size:22px; }
+.prose-wrap :global(table) { display:block; overflow-x:auto; border-collapse:collapse; max-width:100%; font-size:17px; }
+.prose-wrap :global(td),.prose-wrap :global(th) { padding:12px; border:1px solid var(--line); }
+.prose-wrap :global(a) { color:var(--mint); text-decoration:underline; }
+.prose-wrap :global(pre) { overflow-x:auto; padding:16px; }
+.chapter-pagination { display:flex; justify-content:space-between; gap:20px; border-top:1px solid var(--line); padding-top:24px; }
+.chapter-pagination a { max-width:48%; font:16px/1.6 var(--sans); color:var(--lavender); }
+.chapter-pagination small { display:block; color:var(--mint); font:12px/2 monospace; }
+@media(max-width:1200px) { .atlas-shell { grid-template-columns:210px minmax(0,1fr); } .atlas-toc { display:none; } }
+@media(max-width:750px) { .atlas-shell { display:block; padding:24px; } .atlas-index { position:static; max-height:220px; margin-bottom:28px; } .atlas-article .prose-wrap { padding:0; } }
 </style>
