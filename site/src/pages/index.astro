@@ -16,7 +16,7 @@ const gameConcept = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-re
     <div class="hero-left">
       <img class="opening-image" src={atlasHero} alt="" sizes="(max-width: 800px) 94vw, 52vw" loading="eager" fetchpriority="high" />
       <div class="opening-copy">
-      <div class="eyebrow">Myathe Magick System</div>
+      <img class="hero-wordmark" src="https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/myathe-magick-wordmark.png" alt="Myathe Magick" width="2087" height="753" />
       <h1>Thirty years at the<br><em>edge of the map</em></h1>
       <p class="tagline">A living system at the intersection of sacred geometry, chaos magick, torsion field physics, and the structure of time itself.</p>
       <div class="cta-row">
@@ -28,7 +28,7 @@ const gameConcept = 'https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-re
     <article class="opening-game">
       <img class="opening-image" src={gameConcept} alt="Mycelium concept art: fungi reclaiming an industrial interior." width={1000} loading="eager" />
       <span class="development-badge">In development · Concept art</span>
-      <div class="game-copy"><h2>Mycelium</h2><p>What's left behind. What grows back. A voxel survival game of ruins, scavenging, and fungal regrowth.</p><a class="design-button" href="/game">Follow development →</a></div>
+      <div class="game-copy"><h2 class="mycelium-title"><img src="https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/mycelium-logo.png" alt="Mycelium" width="2079" height="756" /></h2><p>What's left behind. What grows back. A voxel survival game of ruins, scavenging, and fungal regrowth.</p><a class="design-button" href="/game">Follow development →</a></div>
     </article>
   </section>
   <section class="crystal-section" aria-labelledby="crystal-heading">
@@ -182,4 +182,5 @@ h1 em { font:inherit; color:var(--heading); }
 @media(max-width:1100px) { .crystal-row { grid-template-columns:repeat(7,minmax(0,1fr)); }.crystal-label { grid-column:1/-1; display:flex; gap:20px; align-items:center; }.crystal-label p { margin:0; }.opening-copy { padding:25px; } }
 @media(max-width:800px) { .opening { grid-template-columns:1fr; }.hero-left,.opening-game { min-height:420px; }.opening-copy { min-height:420px; }.opening-game { min-height:350px; }.crystal-row { grid-template-columns:repeat(4,minmax(0,1fr)); }.crystal-info-content { flex-direction:column; align-items:flex-start; gap:15px; }.tools-grid,.feature-deck { grid-template-columns:1fr; }.tools-heading { flex-direction:column; align-items:flex-start; }.stats-bar { grid-template-columns:repeat(2,1fr); } }
 @media(max-width:480px) { .crystal-row { grid-template-columns:repeat(2,minmax(0,1fr)); }.crystal-label { display:block; }.crystal-label p { margin-top:6px; }.opening-copy { padding:24px; }.game-copy { padding:70px 24px 24px; } }
-</style>
+.hero-wordmark{display:block;width:100%;max-width:510px;height:auto;margin:0 0 18px;filter:drop-shadow(0 2px 10px #170c27)}.mycelium-title{margin:0 0 14px}.mycelium-title img{display:block;width:100%;max-width:510px;height:auto;filter:drop-shadow(0 0 12px rgba(64,236,216,.3))}</style>
+
