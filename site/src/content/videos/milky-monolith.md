@@ -1,5 +1,5 @@
 ---
-title: "Milky Monolith (Doomscroller Remix)"
+title: "Milky Monolith (Doomscroller Remix) 🎵"
 date: 2024-01-06
 category: music
 theme: music

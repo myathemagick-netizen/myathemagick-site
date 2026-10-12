@@ -1,5 +1,5 @@
 ---
-title: "You Were Never Alone"
+title: "You Were Never Alone 🎵"
 date: 2024-01-08
 category: music
 theme: music

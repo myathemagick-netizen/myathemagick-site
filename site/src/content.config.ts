@@ -6,7 +6,7 @@ const videos = defineCollection({
   loader: glob({ pattern: '*.md', base: 'src/content/videos' }),
   schema: z.object({
     title: z.string(),
-    date: z.coerce.date(),
+    date: z.coerce.date().optional(),
     category: z.string(),
     theme: z.string(),
     youtubeId: z.string(),

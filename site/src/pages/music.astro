@@ -1,9 +1,10 @@
-﻿---
+---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
 const allTracks = await getCollection('music');
+const musicVideos = (await getCollection('videos')).filter(v=>v.data.category==='music');
 const sorted = allTracks.sort((a, b) => {
   if (a.data.volume !== b.data.volume) return a.data.volume - b.data.volume;
   return a.data.track - b.data.track;
@@ -94,7 +95,7 @@ const sorted = allTracks.sort((a, b) => {
     </div>
   </div>
 
-  <Footer />
+  <section class="music-video-section"><h2>Music videos</h2><p>Watch the channel’s music releases on YouTube. Titles marked 🎵 are music videos.</p><div class="music-video-grid">{musicVideos.map(video=><a href={`https://www.youtube.com/watch?v=${video.data.youtubeId}`} target="_blank" rel="noopener noreferrer"><img src={`https://img.youtube.com/vi/${video.data.youtubeId}/mqdefault.jpg`} alt={video.data.title} loading="lazy"/><h3>{video.data.title}</h3><span>Watch on YouTube ↗</span></a>)}</div></section><Footer />
 
 </Layout>
 
@@ -546,4 +547,4 @@ function loadCoverArt(url) {
     .player-right { display: none; }
     :global(footer) { margin-bottom: 100px; }
   }
-</style>
+.music-video-section{padding:40px 4%;max-width:1200px;margin:auto}.music-video-section h2{font:600 32px var(--sans);color:var(--heading);margin-bottom:15px}.music-video-section p{font:17px/1.7 var(--sans);margin-bottom:24px}.music-video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.music-video-grid a{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel);padding-bottom:18px}.music-video-grid img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}.music-video-grid h3{font:600 20px/1.4 var(--sans);color:var(--heading);margin:14px 18px}.music-video-grid span{font:14px var(--sans);color:var(--mint);margin:0 18px}@media(max-width:800px){.music-video-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:500px){.music-video-grid{grid-template-columns:1fr}}</style>

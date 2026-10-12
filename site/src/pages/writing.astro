@@ -1,4 +1,4 @@
-﻿---
+---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
@@ -12,7 +12,7 @@ const books = allWriting.filter(w => w.data.type === 'book');
 
   <div class="page-header">
     <div class="eyebrow">Writing</div>
-    <h1>Essays & books</h1>
+    <h1>Essays, books & the Atlas</h1>
     <p class="intro">Long-form investigations into the Myathe Magick System — essays on Substack and books available on Ko-fi.</p>
   </div>
 
@@ -45,6 +45,7 @@ const books = allWriting.filter(w => w.data.type === 'book');
     </div>
   </section>
 
+  <section class="section"><div class="section-head"><div class="section-label">The Atlas</div></div><div class="books-grid"><a href="/system/atlas" class="book-card"><div class="book-cover"><img src="https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/site-refresh/atlas-connections-hero.png" alt="Illustrative artwork for the Atlas" loading="lazy" /></div><div class="book-body"><div class="book-platform">Read on this site</div><div class="book-title">A Pataphysical Atlas of Chronon Geography</div><div class="book-desc">Explore the Grid of Rifts and Vortices, from the introduction through six books.</div><div class="book-link">Read the Atlas →</div></div></a></div></section>
   <!-- BOOKS -->
   <section class="section">
     <div class="section-head">
