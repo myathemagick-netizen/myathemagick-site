@@ -1,0 +1,60 @@
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
+
+const videos = defineCollection({
+  loader: glob({ pattern: '*.md', base: 'src/content/videos' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    category: z.string(),
+    theme: z.string(),
+    youtubeId: z.string(),
+    duration: z.string(),
+    description: z.string(),
+    featured: z.boolean(),
+  }),
+});
+
+const music = defineCollection({
+  loader: glob({ pattern: '*.md', base: 'src/content/music' }),
+  schema: z.object({
+    title: z.string(),
+    volume: z.number(),
+    track: z.number(),
+    duration: z.string(),
+    tag: z.string(),
+    flavor: z.string(),
+    audioUrl: z.string(),
+  }),
+});
+
+const writing = defineCollection({
+  loader: glob({ pattern: '*.md', base: 'src/content/writing' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    type: z.string(),
+    description: z.string(),
+    coverUrl: z.string(),
+    externalUrl: z.string(),
+    platform: z.string(),
+    featured: z.boolean(),
+    paid: z.boolean().optional(),
+  }),
+});
+
+const atlas = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: 'src/content/atlas' }),
+  schema: z.object({
+    title: z.string(),
+    order: z.number(),
+    book: z.string(),
+    description: z.string(),
+  }),
+});
+
+const gameImage = z.object({src:z.string(),alt:z.string(),kind:z.enum(['game_screenshot','game_render','concept_art','illustration','unknown'])});
+const gameSchema = z.object({title:z.string(),description:z.string(),section:z.enum(['atlas','field-guide','systems','future','development','play']),kind:z.string(),route:z.string(),status:z.enum(['implemented','experimental','planned','concept']).optional(),sourceStatus:z.string().optional(),source:z.string(),updated:z.string().optional(),date:z.string().optional(),entry:z.number().optional(),session:z.string().optional(),note:z.string().optional(),tier:z.string().optional(),stack:z.number().optional(),images:z.array(gameImage).default([]),related:z.array(z.string()).default([])});
+const gameCollection = (name:string) => defineCollection({loader:glob({pattern:'**/*.md',base:'src/content/game/'+name}),schema:gameSchema});
+export const collections = { videos,music,writing,atlas,gameBiomes:gameCollection('gameBiomes'),gameItems:gameCollection('gameItems'),gameOrganisms:gameCollection('gameOrganisms'),gameSystems:gameCollection('gameSystems'),gameFuture:gameCollection('gameFuture'),gameDevlogs:gameCollection('gameDevlogs'),gameGuides:gameCollection('gameGuides'),gamePlaces:gameCollection('gamePlaces') };

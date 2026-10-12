@@ -1,0 +1,5 @@
+---
+const {cards,icons=false}=Astro.props;
+const labels={experimental:'Experimental',planned:'Planned',concept:'Concept'};
+---
+<div class:list={['preview-cards',{'preview-icon-cards':icons}]}>{cards.map(card=><article class="preview-card">{card.image&&<figure><img src={card.image.src} alt={card.image.alt} loading="lazy"/><figcaption>{icons?'Inventory icon':card.image.kind==='concept_art'?'Concept artwork · not gameplay':card.image.kind==='game_render'?'Engine structure render':'Development capture'}</figcaption></figure>}<div class="preview-card-copy"><h2>{card.title}</h2>{labels[card.status]&&<span class="preview-status">{labels[card.status]}</span>}<p>{card.text}</p></div>{card.additionalImage&&<figure><img src={card.additionalImage.src} alt={card.additionalImage.alt} loading="lazy"/><figcaption>{card.additionalImage.alt} · Development capture</figcaption></figure>}</article>)}</div>

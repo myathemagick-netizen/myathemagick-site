@@ -1,0 +1,8 @@
+---
+import Layout from './Layout.astro';
+import Footer from '../components/Footer.astro';
+import {sections} from '../data/game-encyclopedia';
+import '../styles/game-encyclopedia.css';
+const {title,description,section} = Astro.props;
+---
+<Layout title={title+' · Mycelium'} description={description}><div class="encyclopedia-wrap"><nav class="game-sections" aria-label="Game encyclopedia"><a href="/game">Overview</a>{sections.map(s=><a href={`/game/${s.id}`} aria-current={s.id===section?'page':undefined}>{s.title}</a>)}</nav><slot /></div><Footer /></Layout>

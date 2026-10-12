@@ -1,0 +1,5 @@
+---
+const destinations={'getting-started':'systems','world-and-ruins':'atlas','mycelium-and-affinity':'future','crafting-and-discovery':'systems'};
+export function getStaticPaths(){return Object.entries(destinations).map(([slug,section])=>({params:{slug},props:{section}}))}
+return Astro.redirect('/game/'+Astro.props.section,301);
+---

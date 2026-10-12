@@ -54,4 +54,4 @@ const atlas = defineCollection({
   }),
 });
 
-export const collections = { videos, music, writing, atlas };
+export const collections = {videos,music,writing,atlas};

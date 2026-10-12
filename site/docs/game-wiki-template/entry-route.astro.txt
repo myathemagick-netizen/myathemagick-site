@@ -1,0 +1,31 @@
+---
+import {getCollection,render} from 'astro:content';
+import GameEncyclopedia from '../../layouts/GameEncyclopedia.astro';
+import GameStatus from '../../components/GameStatus.astro';
+import {sections,collectionNames,imageLabels} from '../../data/game-encyclopedia';
+export async function getStaticPaths(){const entries=(await Promise.all(collectionNames.map(c=>getCollection(c)))).flat();const roots=new Set(sections.map(s=>'/game/'+s.id));return [...sections.map(section=>({params:{entry:section.id},props:{section,entries}})),...entries.filter(e=>!roots.has(e.data.route)).map(entry=>({params:{entry:entry.data.route.replace('/game/','')},props:{entry,entries,section:sections.find(s=>s.id===entry.data.section)}}))];}
+const {entry,entries,section}=Astro.props;
+const title=entry?.data.title||section.title;
+const description=entry?.data.description||section.description;
+const rendered=entry?await render(entry):null;
+const Content=rendered?.Content;
+const related=[...new Set([...(entry?.data.related||[]),...entries.filter(e=>e.data.related.some(href=>href.split('#')[0]===entry?.data.route)).slice(0,8).map(e=>e.data.route)])].map(href=>({href,target:entries.find(e=>e.data.route===href.split('#')[0])})).filter(r=>r.target);
+const sectionEntries=entries.filter(e=>e.data.section===section.id&&e.data.route!=='/game/'+section.id);
+const kinds=[...new Set(sectionEntries.map(e=>e.data.kind))];
+const rootEntry=entries.find(e=>e.data.route==='/game/'+section.id);
+const rootRendered=rootEntry?await render(rootEntry):null;
+const RootContent=rootRendered?.Content;
+---
+<GameEncyclopedia title={title} description={description} section={section.id}>
+<nav class="encyclopedia-crumb" aria-label="Game section breadcrumb"><a href={`/game/${section.id}`}>{section.title}</a>{entry&&<><span>/</span><span aria-current="page">{title}</span></>}</nav>
+<header class="encyclopedia-header"><span class="kicker">Mycelium: Aftergrowth / {section.title}</span><h1>{title}</h1><p class="encyclopedia-lead">{description}</p>{entry&&<GameStatus status={entry.data.status}/>}</header>
+{section.id==='future'&&<aside class="encyclopedia-notice">Future systems are not playable. Planned features are intended work; concepts may change or never be built.</aside>}
+{entry ? <div class="entry-layout"><article class="encyclopedia-prose">{entry.data.kind==='devlog'&&<aside class="encyclopedia-notice">Development record · Dates are approximate commit dates. This historical entry may describe an earlier state of the game.</aside>}{entry.data.tier&&<dl class="item-facts"><div><dt>Tier</dt><dd>{entry.data.tier}</dd></div><div><dt>Stack</dt><dd>{entry.data.stack}</dd></div></dl>}{entry.data.images.length>0&&<div class="entry-gallery">{entry.data.images.slice(0,3).map(image=><figure><a href={image.src}><img src={image.src} alt={image.alt} loading="lazy" /></a><figcaption>{image.alt}<span>{imageLabels[image.kind]}</span></figcaption></figure>)}</div>}{Content&&<Content/>}<footer class="entry-source">Source: {entry.data.source}{entry.data.updated&&<span>Reviewed in the supplied handoff: {entry.data.updated}</span>}{entry.data.note&&<span>{entry.data.note}</span>}</footer></article><aside class="entry-related"><h2>Related reading</h2>{related.length?related.map(r=><a href={r.href}>{r.target.data.title} →</a>):<a href={`/game/${section.id}`}>Browse {section.title} →</a>}<a href="/game/development">Development journal →</a><a href="/game">← Game overview</a></aside></div> : <>
+{RootContent&&<details class="section-introduction"><summary>About this section</summary><div class="encyclopedia-prose"><RootContent/></div></details>}
+<div class="encyclopedia-controls"><label>Find an entry<input type="search" placeholder="Search titles and descriptions" data-entry-search /></label><label>Development status<select data-status-filter><option value="">All statuses</option><option value="implemented">Implemented</option><option value="experimental">Experimental</option><option value="planned">Planned</option><option value="concept">Concept</option></select></label><p data-result-count aria-live="polite"></p></div>
+{kinds.map(kind=><section class="encyclopedia-group"><h2>{kind==='devlog'?'Development journal':kind.replaceAll('-',' ')}</h2><div class="encyclopedia-cards">{sectionEntries.filter(e=>e.data.kind===kind).sort((a,b)=>kind==='devlog'?(b.data.date||'').localeCompare(a.data.date||'')||(b.data.entry||0)-(a.data.entry||0):a.data.title.localeCompare(b.data.title)).map(e=><a class="encyclopedia-card" href={e.data.route} data-entry-card data-search={(e.data.title+' '+e.data.description).toLowerCase()} data-status={e.data.status||''}>{e.data.images[0]&&<img src={e.data.images[0].src} alt={e.data.images[0].alt} loading="lazy" />}<div><GameStatus status={e.data.status}/>{e.data.kind==='devlog'&&<span class="kicker">Journal · {e.data.date}</span>}<h3>{e.data.title}</h3><p>{e.data.description}</p><span class="card-link">Read entry →</span></div></a>)}</div></section>)}
+<p class="encyclopedia-empty" hidden>No matching entries. Try another search or status.</p></>}
+</GameEncyclopedia>
+<script>
+const search=document.querySelector<HTMLInputElement>('[data-entry-search]');const filter=document.querySelector<HTMLSelectElement>('[data-status-filter]');const cards=Array.from(document.querySelectorAll<HTMLElement>('[data-entry-card]'));function update(){let count=0;cards.forEach(card=>{const show=(!search?.value||card.dataset.search?.includes(search.value.toLowerCase()))&&(!filter?.value||card.dataset.status===filter.value);card.hidden=!show;if(show)count++});document.querySelectorAll<HTMLElement>('.encyclopedia-group').forEach(group=>{group.hidden=!Array.from(group.querySelectorAll<HTMLElement>('[data-entry-card]')).some(card=>!card.hidden)});const total=document.querySelector('[data-result-count]');if(total)total.textContent=count+' entries';const empty=document.querySelector<HTMLElement>('.encyclopedia-empty');if(empty)empty.hidden=count>0}search?.addEventListener('input',update);filter?.addEventListener('change',update);if(search)update();
+</script>

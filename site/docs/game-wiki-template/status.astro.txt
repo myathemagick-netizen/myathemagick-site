@@ -1,0 +1,5 @@
+---
+const {status} = Astro.props;
+const labels = {implemented:'Implemented',experimental:'Experimental',planned:'Planned',concept:'Concept'};
+---
+{status && <span class={`game-status status-${status}`}>{labels[status]}</span>}

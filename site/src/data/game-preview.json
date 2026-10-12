@@ -1,0 +1,467 @@
+{
+  "sections": [
+    {
+      "id": "atlas",
+      "title": "World Atlas",
+      "description": "A glimpse of the lands and places waiting beyond the next road."
+    },
+    {
+      "id": "field-guide",
+      "title": "Field Guide",
+      "description": "A few things worth finding. The rest is yours to discover."
+    },
+    {
+      "id": "systems",
+      "title": "Game Systems",
+      "description": "Scavenge, learn, craft, and make a place in an abandoned world."
+    },
+    {
+      "id": "future",
+      "title": "What May Grow Next",
+      "description": "Ideas and planned work beyond the current development build."
+    },
+    {
+      "id": "development",
+      "title": "Development Notebook",
+      "description": "Selected changes from the workshop, in pictures and plain language."
+    },
+    {
+      "id": "play",
+      "title": "Play & Support",
+      "description": "Follow development and find out when there is a way to play."
+    }
+  ],
+  "zones": [
+    {
+      "title": "Rust Belt",
+      "text": "Dead industry, corroded catwalks, railway yards, and foul pools. Metal-feeding fungi find a foothold here. After dark, Rust Rats emerge; sometimes their red eyes are all you can see.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-05__10_rustbelt_day.jpg",
+        "alt": "The Rustbelt by day",
+        "kind": "game_screenshot"
+      },
+      "status": "implemented",
+      "additionalImage": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/rust-rat-night.png",
+        "alt": "A Rust Rat at night, its red eyes glowing among the industrial ruins",
+        "kind": "game_screenshot"
+      }
+    },
+    {
+      "title": "Hollow Wood",
+      "text": "An old, dark forest in a twilight of its own, with a moon too large.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-06__09_hollow_day.jpg",
+        "alt": "The wood by day",
+        "kind": "game_screenshot"
+      },
+      "status": "implemented",
+      "additionalImage": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/hollow-owl.png",
+        "alt": "An owl with bright eyes perched among the dark red trees at night",
+        "kind": "game_screenshot"
+      }
+    },
+    {
+      "title": "Glass Desert",
+      "text": "A vast land of sand, mineral crust, and ground fused into glass. Shade is scarce; its landscapes and landmarks are still being tuned.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-08__desert_blackglass_close.jpg",
+        "alt": "Closer (desert blackglass close)",
+        "kind": "game_screenshot"
+      },
+      "status": "experimental"
+    },
+    {
+      "title": "Mountains",
+      "text": "Ranges of bare rock, pines below, snow on the tops that never melts.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-05__01_mountain_range.jpg",
+        "alt": "A mountain range",
+        "kind": "game_screenshot"
+      },
+      "status": "implemented"
+    },
+    {
+      "title": "Sporelands",
+      "text": "Where the network breaks the surface.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-08__cold_motes_bloom.jpg",
+        "alt": "(cold motes bloom)",
+        "kind": "game_screenshot"
+      },
+      "status": "implemented"
+    },
+    {
+      "title": "Autumn Fields",
+      "text": "Old open country gone to tan grass, goldenrod and asters, the trees turned orange, red and gold.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-04__54_autumn_tree.jpg",
+        "alt": "Autumn trees (54 autumn tree)",
+        "kind": "game_screenshot"
+      },
+      "status": "implemented"
+    }
+  ],
+  "places": [
+    {
+      "title": "The works",
+      "text": "Factory halls, warehouses, ironworks, tank farms, and catwalks over the streets: a different scale of abandoned world.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/buildings__works_aerial.jpg",
+        "alt": "(works aerial)",
+        "kind": "game_render"
+      }
+    },
+    {
+      "title": "A stop at the edge of the desert",
+      "text": "A damaged canopy, abandoned pumps, and a kiosk beside the road. Four old gas mascots appear on signs and billboards: Flame, the smiling flame; Droppy, the fuel droplet; Tiger; and Dilly, the armadillo. These scraps of roadside branding give each stop its own character.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/buildings__roadside_station_brick.jpg",
+        "alt": "(roadside station brick)",
+        "kind": "game_render"
+      },
+      "status": "experimental"
+    },
+    {
+      "title": "Museum & library",
+      "text": "Some buildings hold traces of what people knew and valued. A skeleton in a museum, a book in a library: there is more to find than raw materials.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/buildings__museum.jpg",
+        "alt": "(museum)",
+        "kind": "game_render"
+      }
+    },
+    {
+      "title": "Hollow Manor",
+      "text": "A walled park deep in a Hollow Wood: a stream all the way round with stone bridges over it, an iron fence on a stone wall, a drive between lanterns that still burn, a graveyard, a glasshouse.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/manor__room_bedroom.jpg",
+        "alt": "(room bedroom)",
+        "kind": "game_render"
+      }
+    },
+    {
+      "title": "Drive-in after dark",
+      "text": "An outdoor screen, abandoned cars, and a lot returning to grass. A place built for gathering now waits quietly beneath the stars.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/drive-in-night.png",
+        "alt": "An abandoned drive-in movie theater with parked cars beneath the stars",
+        "kind": "game_screenshot"
+      }
+    }
+  ],
+  "mascots": {
+    "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/gas-billboards.png",
+    "alt": "Flame, Droppy, Tiger, and Dilly on four GAS 24H billboards",
+    "kind": "game_render"
+  },
+  "groups": [
+    {
+      "name": "Finds",
+      "cards": [
+        {
+          "title": "Rusted Pipe",
+          "text": "Plumbing that carried water once. Hollow, heavy, useful.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_rusted_pipe.png",
+            "alt": "Rusted Pipe inventory icon",
+            "kind": "illustration"
+          }
+        },
+        {
+          "title": "Circuit Board",
+          "text": "Pulled from old electronics. Whoever can read these can rebuild things.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_circuit_board.png",
+            "alt": "Circuit Board inventory icon",
+            "kind": "illustration"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tools",
+      "cards": [
+        {
+          "title": "Scrap Hatchet",
+          "text": "A blade cut from sheet metal, bolted to a haft. Bites into wood.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_scrap_hatchet.png",
+            "alt": "Scrap Hatchet inventory icon",
+            "kind": "illustration"
+          }
+        },
+        {
+          "title": "Scrap Pickaxe",
+          "text": "A spike of sheet steel on a haft. Slow, but ore gives to it where a pry bar just skids.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_scrap_pickaxe.png",
+            "alt": "Scrap Pickaxe inventory icon",
+            "kind": "illustration"
+          }
+        },
+        {
+          "title": "Wrench",
+          "text": "Hold it to see the pipes: what joins what, where the water flows, what each pump is doing. X on a pipe shuts or opens its valve.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_wrench.png",
+            "alt": "Wrench inventory icon",
+            "kind": "illustration"
+          }
+        },
+        {
+          "title": "Magnifier",
+          "text": "A lens in a brass rim. Carry it and you notice more: everything teaches you a little more.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_magnifier.png",
+            "alt": "Magnifier inventory icon",
+            "kind": "illustration"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "cards": [
+        {
+          "title": "Book",
+          "text": "Swollen with damp. Most pages are still readable.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_book.png",
+            "alt": "Book inventory icon",
+            "kind": "illustration"
+          }
+        },
+        {
+          "title": "Research Notes",
+          "text": "Your own notes on a subject.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_research_book.png",
+            "alt": "Research Notes inventory icon",
+            "kind": "illustration"
+          }
+        },
+        {
+          "title": "Rare Book: A Natural History of the Fungi",
+          "text": "A great folio of hand-coloured plates, every gill drawn. Read it (hold it, LT): a great deal of Mycology, more if you're studying it.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_rare_book_mycology.png",
+            "alt": "Rare Book: A Natural History of the Fungi inventory icon",
+            "kind": "illustration"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Food",
+      "cards": [
+        {
+          "title": "Canned Food",
+          "text": "Dented, label faded. The date stamp is unreadable, which might be for the best.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_canned_food.png",
+            "alt": "Canned Food inventory icon",
+            "kind": "illustration"
+          }
+        },
+        {
+          "title": "Mushroom Soup",
+          "text": "Mushrooms simmered thin with an inkcap for colour. Warm all the way down.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_mushroom_soup.png",
+            "alt": "Mushroom Soup inventory icon",
+            "kind": "illustration"
+          }
+        },
+        {
+          "title": "Roasted Puffball",
+          "text": "Crisp outside, soft and smoky within.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_roasted_puffball.png",
+            "alt": "Roasted Puffball inventory icon",
+            "kind": "illustration"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mushrooms",
+      "cards": [
+        {
+          "title": "Puffball",
+          "text": "Firm and white inside. Squeeze an old one and it breathes out a cloud of spores.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_puffball.png",
+            "alt": "Puffball inventory icon",
+            "kind": "illustration"
+          }
+        },
+        {
+          "title": "Sand Truffle",
+          "text": "A knobbly lump dug from the damp under a dry wash. Dense, earthy and rich: the desert's one real meal.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_sand_truffle.png",
+            "alt": "Sand Truffle inventory icon",
+            "kind": "illustration"
+          }
+        },
+        {
+          "title": "Teal Button Mushroom",
+          "text": "Teal caps that grow thickest where the network is strongest.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/icons/reference_icons__item_button_mushroom_teal.png",
+            "alt": "Teal Button Mushroom inventory icon",
+            "kind": "illustration"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Wildlife",
+      "cards": [
+        {
+          "title": "Rust Rat",
+          "text": "Out at night in the Rust Belt. Look for the red eyes among the ruined industry.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/rust-rat-night.png",
+            "alt": "A Rust Rat at night, its red eyes glowing among the industrial ruins",
+            "kind": "game_screenshot"
+          }
+        },
+        {
+          "title": "Dune Hopper",
+          "text": "A nocturnal desert creature that hops across the sand and retreats to its burrow.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-11__hopper_hopper_night.jpg",
+            "alt": "Dune Hopper in the desert at night",
+            "kind": "game_screenshot"
+          }
+        },
+        {
+          "title": "Glassback Beetle",
+          "text": "A daytime creature of the glass fields. Its glassy back catches the sun; its behavior is still experimental.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-11__beetle_beetle_day.jpg",
+            "alt": "Glassback Beetle on the glass fields",
+            "kind": "game_screenshot"
+          },
+          "status": "experimental"
+        },
+        {
+          "title": "Owl",
+          "text": "A nighttime resident of Hollow Wood, watching from the trees.",
+          "image": {
+            "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/hollow-owl.png",
+            "alt": "An owl with bright eyes perched among the dark red trees at night",
+            "kind": "game_screenshot"
+          }
+        }
+      ]
+    }
+  ],
+  "systems": [
+    {
+      "title": "Scavenge what remains",
+      "text": "Search the abandoned world for useful things. A found object can become equipment, material, or the beginning of a new idea."
+    },
+    {
+      "title": "Learn through discovery",
+      "text": "Holding ingredients brings recipes to mind. Books preserve research, while working at stations opens new possibilities."
+    },
+    {
+      "title": "Work with your hands",
+      "text": "Craft tools and useful objects, build shelter, and furnish a place of your own. The world can be broken down and rebuilt.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/crafting-workshop.png",
+        "alt": "Crafting tables, tools, and storage in a warmly lit workshop",
+        "kind": "game_screenshot"
+      }
+    },
+    {
+      "title": "Read the land",
+      "text": "Food safety, cold, warmth, and heat give places their own pressures. Exploring means noticing what the environment asks of you.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-05__01_mountain_range.jpg",
+        "alt": "A mountain range",
+        "kind": "game_screenshot"
+      }
+    },
+    {
+      "title": "Growth in an inherited world",
+      "text": "Mycelium spreads across the ground. Buildings arrive with different degrees of ruin and growth; their stories are written into what remains.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-05__21_catwalk_vines.jpg",
+        "alt": "Vines returning to an industrial catwalk",
+        "kind": "game_screenshot"
+      }
+    }
+  ],
+  "future": [
+    {
+      "title": "Weather",
+      "text": "Rain, storms, and changing weather are planned; they are not playable yet.",
+      "status": "planned"
+    },
+    {
+      "title": "Combat & encounters",
+      "text": "Combat, weapons, and a wider range of creature encounters remain planned work.",
+      "status": "planned"
+    },
+    {
+      "title": "Ritual & enchantment",
+      "text": "Ritual magick and enchantment are planned beyond the mushroom brews currently being explored.",
+      "status": "planned"
+    },
+    {
+      "title": "A deeper fungal network",
+      "text": "Strain affinity and fungal transport through Root Lines are concepts. Their shape may change, and they may never be built.",
+      "status": "concept"
+    },
+    {
+      "title": "A world with other people",
+      "text": "Repopulation and strain-aligned allies are concepts, rather than existing NPC systems.",
+      "status": "concept"
+    }
+  ],
+  "updates": [
+    {
+      "title": "The desert takes shape",
+      "text": "Recent work built out the Glass Desert: glass-covered ground, a distinctive sky, heat shimmer, and scattered roadside landmarks. The image shows the developing landscape, whose balance is still experimental.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-08__desert_blackglass_close.jpg",
+        "alt": "Closer (desert blackglass close)",
+        "kind": "game_screenshot"
+      },
+      "status": "experimental"
+    },
+    {
+      "title": "Small lives on the glass",
+      "text": "The Dune Hopper brings movement to the desert night; the Glassback Beetle adds a daytime resident. Recent work focused on their appearance and simple behaviors.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-11__beetle_beetle_wide.jpg",
+        "alt": "The new Glassback Beetle on the glass fields",
+        "kind": "game_screenshot"
+      },
+      "status": "experimental"
+    },
+    {
+      "title": "Roadside identity",
+      "text": "Four gas mascots give the signs and billboards a consistent identity along their roads. This asset preview shows Flame, Droppy, Tiger, and Dilly as they appear on the game’s billboards.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/gas-billboards.png",
+        "alt": "Flame, Droppy, Tiger, and Dilly on four GAS 24H billboards",
+        "kind": "game_render"
+      }
+    },
+    {
+      "title": "Green against the rust",
+      "text": "The Rust Belt pass added industry, hazards, wildlife, and visual weathering. Catwalks and returning vegetation make the works feel like a place with a past.",
+      "image": {
+        "src": "https://pub-eecb1a92d0fc4240bd6e42897daf01f6.r2.dev/game-preview/game/screenshots__2026-10-05__21_catwalk_vines.jpg",
+        "alt": "Vegetation beneath a catwalk in the works",
+        "kind": "game_screenshot"
+      }
+    }
+  ]
+}
