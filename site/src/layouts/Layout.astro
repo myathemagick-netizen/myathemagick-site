@@ -8,6 +8,19 @@ const { title = "Home", description = "A living system at the intersection of sa
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google Analytics: collect only on the live website. -->
+    <script is:inline>
+      if (['myathemagick.com', 'www.myathemagick.com'].includes(window.location.hostname)) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3G63808RC6');
+        const googleTag = document.createElement('script');
+        googleTag.async = true;
+        googleTag.src = 'https://www.googletagmanager.com/gtag/js?id=G-3G63808RC6';
+        document.head.appendChild(googleTag);
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
