@@ -1,0 +1,33 @@
+---
+import StudioInformation from '../../layouts/StudioInformation.astro';
+---
+<StudioInformation title="Studio privacy policy" description="How the personal Myathe Magick Studio desktop application accesses, uses, stores, and deletes Google account reporting data." canonical="https://myathemagick.com/studio/privacy/">
+<h1>Myathe Magick Studio privacy policy</h1>
+<p class="effective">Effective date: October 27, 2026</p>
+<h2>Operator and purpose</h2>
+<p>Myathe Magick operates Studio as a personal desktop application for reviewing the operator’s own connected accounts and planning creative work. This policy covers Studio’s Google integrations. The information pages on this website do not provide access to the dashboard or its account data.</p>
+<h2>Google data accessed</h2>
+<p>When the operator authorizes a connection, Studio can receive:</p>
+<ul><li>YouTube channel identity and subscriber, view, and video counts; video titles, publication dates, thumbnails, privacy status, scheduled publication information when returned by Google, and view, like, and comment counts. Authorized-channel metadata may include private, unlisted, or scheduled videos.</li><li>YouTube Analytics reports, including daily views, watch time, and subscriber gains and losses.</li><li>Google Analytics reporting for authorized website and Substack properties: pageviews, active users, sessions, engagement rate, daily trends, top pages, traffic sources, and country-level summaries.</li><li>OAuth access and refresh credentials and OAuth client configuration needed to obtain these reports.</li></ul>
+<p>The requested Google scopes are <code>youtube.readonly</code>, <code>yt-analytics.readonly</code>, and <code>analytics.readonly</code> under <code>https://www.googleapis.com/auth/</code>. The current Google integration cannot publish or edit videos or change Analytics settings. Read-only access can still expose private account information; it is not limited to public data.</p>
+<h2>How data is used</h2>
+<p>Studio uses these reports to display local dashboard charts, trends, comparisons, and content-performance views that support the operator’s planning. The current Google integration does not sell Google data, use it for advertising, or send it to AI services or model-training systems.</p>
+<h2>Storage and security</h2>
+<p>Studio stores Google credentials locally using Electron’s operating-system-backed credential encryption. On the current Windows desktop implementation, credential storage requires that encryption to be available.</p>
+<p>Downloaded YouTube and Analytics reports are stored separately as local JSON cache files. These report caches are not encrypted by Studio. The desktop profile also contains local planning data and application/browser storage. Access to the computer and any copies or backups therefore matters for protecting this information.</p>
+<h2>Sharing and external services</h2>
+<p>Google sign-in and authorization use Google’s authorization service. Studio sends authorization credentials and reporting requests directly to Google’s OAuth, YouTube Data, YouTube Analytics, and Google Analytics APIs over HTTPS. Video thumbnails are served from their image URLs, and opening an external Google or YouTube page is subject to that service’s data practices.</p>
+<p>Studio also has separate integrations for other providers. In the current implementation, those integrations do not receive the Google report caches or Google OAuth credentials. The public Myathe Magick website does not host the desktop dashboard’s Google reports or credentials. Copies or backups made by the operator are separate from these direct service requests.</p>
+<p>Myathe Magick Studio’s use and transfer of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its Limited Use requirements.</p>
+<h2>Retention and local deletion</h2>
+<p>Local report caches persist across sessions until refreshed, disconnected, or manually deleted. There is no automatic time-based retention limit in the current implementation. Refreshing replaces the corresponding cached reports. Credentials remain until removed or replaced; access tokens may be refreshed while authorization remains valid.</p>
+<ul><li><strong>YouTube disconnect:</strong> Studio attempts to revoke the stored Google token, removes stored YouTube tokens locally, and deletes its YouTube report cache. The imported OAuth client configuration remains. Revocation can fail; the disconnect result reports whether it succeeded.</li><li><strong>Google Analytics disconnect:</strong> Studio removes its stored Analytics tokens and deletes its Analytics report cache. The OAuth client configuration remains. This action does not revoke Google-side authorization.</li></ul>
+<p>To remove remaining client configuration or other local data, the operator can close Studio and delete the relevant local credential/configuration files or the app’s local data folder. Deleting the entire app-data folder also removes other local Studio data. These controls do not erase independent backups or exported copies; those must be deleted separately.</p>
+<h2>Revoking Google authorization</h2>
+<p>The operator can review or revoke Studio’s access in <a href="https://myaccount.google.com/connections">Google Account connections settings</a>. Revocation prevents future authorized requests but does not necessarily delete reports already downloaded to the computer. Use Studio’s local disconnect controls or delete the local caches separately. Revoking an app grant may affect other Google connections using the same app.</p>
+<h2>The public website is separate</h2>
+<p>The public Myathe Magick website uses Google Analytics on its live domain to measure website use. That website tracking is separate from Studio retrieving authorized account reports. The website also requests fonts from Google Fonts. This desktop-application policy is not a complete privacy or cookie notice for the rest of the website and does not change its tracking configuration. Google’s own data practices are described in its <a href="https://policies.google.com/privacy">privacy policy</a>.</p>
+<h2>Contact and changes</h2>
+<p>For questions or requests concerning Studio’s data practices, contact Myathe Magick at <a href="mailto:myathe.magick@gmail.com">myathe.magick@gmail.com</a>. Changes to this policy will be published on this page with an updated effective date.</p>
+<p><a href="/studio/">About Myathe Magick Studio</a></p>
+</StudioInformation>

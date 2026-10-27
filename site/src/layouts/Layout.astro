@@ -3,7 +3,7 @@ import PageNavigation from '../components/PageNavigation.astro';
 import '../styles/interior.css';
 import Nav from '../components/Nav.astro';
 import '../styles/theme.css';
-const { title = "Home", description = "A living system at the intersection of sacred geometry, chaos magick, torsion field physics, and the structure of time itself." } = Astro.props;
+const { noindex = false, canonical, title = "Home", description = "A living system at the intersection of sacred geometry, chaos magick, torsion field physics, and the structure of time itself." } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -25,6 +25,8 @@ const { title = "Home", description = "A living system at the intersection of sa
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
     <title>{title} · Myathe Magick</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
